@@ -1,0 +1,13 @@
+site_name: ITU Project
+site_url: https://dssgxitu.com/
+
+nav:
+    - Home: index.md
+    - About: about.md
+    - Exploratory Data Analysis: eda.md
+    - Feature Engineering: fe.md
+    - Model Selection: mdsel.md
+    - Model Evaluation: mdeval.md
+    - Model Results: mdres.md
+    - Conclusion: con.md
+theme: readthedocs
