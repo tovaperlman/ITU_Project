@@ -4,10 +4,16 @@ Having retrieved data of many different types, at different geospatial resolutio
 
 ## Data Cleaning
 
-
+* `Numerical Variables` - Impute missing values as variable median.
+* `Categorical Variables` - Fill missing values with 'missing' label; perform one-hot encoding.
 
 ## Target Variable
 
+* `Brazil` - A4A
+* `Thailand` - H107
+
 ## Joining Locations
+
+
 
 ## Features Used
