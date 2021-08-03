@@ -6,4 +6,6 @@ Here is where Jonny will talk about the script that he assembled.
 
 ## Target Variable:
 
+## Joining Locations:
+
 ## Features we've used:
