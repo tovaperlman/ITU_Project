@@ -2,9 +2,16 @@
 
 The model we need to train is a regression model as we are attempting to predict a number between 0-100 of internet connectivity. Later on, we attempted to turn this into a classification problem to check our work and it did not provide any higher accuracy. 
 
+## Mlflow Set-up
+
+In order to track our models, we set up autologging in mlflow. Mlflow is an exciting and experimental way of logging models. We set up our model training so that our python script for each model would create a new experiment for each run, it would log each of our model parameters when we did hyperparameter tuning and then log the best parameter at the top. In this way we were able to compare the various parameters logged in each run to determine how to change the grid space of the hyperparameters. We also were then able to compare models to each other. Within mlflow,we also logged the predictors for each run and the requirements for packages and dependencies to run. We are including both here in order to make this as reproducible as possible. Below you can see a screenshot of a mlflow which logs our best runs, with our best hyperparameters and using our custom metric for evaluation.  
+
 ## Model Training
 
-We tried out 7 different models in order to determine which model had the best accuracy. In addition, we built a custom metric in order to score both our test set within our cross validation and our final holdout set. Below please find a code snippet of our custom metric. We built this as we understood that it was more important to have better accuracy on schools with lower internet connectivity than higher. Before insitituting the custom metric, our models were good with predicting the average values, but they did poorly at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). Secondly, we instituted our custom metric which trained the model to minimize the error score within the 0 - 30 level of predictions. Our best model had an average error of .06 and for specifically predicting schools below 30% connected, had an average error of .05. This means that for schools that are predicted to be below 30%, we can trust their predictions as on average they are only off by 5 percentage points from the ground truth value. 
+We tried out 7 different models in order to determine which model had the best accuracy. In addition, we built a custom metric in order to score both our test set within our cross validation and our final holdout set. Below please find a code snippet of our custom metric.
+`def custom metric`
+
+ We built this as we understood that it was more important to have better accuracy on schools with lower internet connectivity than higher. Before insitituting the custom metric, our models were good with predicting the average values, but they did poorly at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). Secondly, we instituted our custom metric which trained the model to minimize the error score within the 0 - 30 level of predictions. Our best model had an average error of .06 and for specifically predicting schools below 30% connected, had an average error of .05. This means that for schools that are predicted to be below 30%, we can trust their predictions as on average they are only off by 5 percentage points from the ground truth value. 
 
 1. Linear Regression
 2. Random Forest
@@ -28,23 +35,12 @@ Here is a map of our predictions for schools within Brazil. We predicted X amoun
 
 Here is also a map of ground truth data. There are 69 schools in Brazil that have less than 30% internet connectivity. 
 
+How our predictions did for Brazil, show the maps, pretty well!
+
+Also show how they compare to external information, the list that Jacob made
+
+## Model Interpretation
 Here is also a graph of our feature importances for our final model.
 
 Here are the examinations of the shapely values for feature importances. 
-
-How our predictions did for Brazil, show the maps, pretty well!
-
-## Model Application
-
-This is where we show our application of our Brazil model to the Thailand Data and display how well it did.
-
-Our next big step was applying the best model to Thailand data. We were nervous to apply the model as we were not sure that the same assumptions that are true for Brazil would hold true for Thailand. While the satellite data and ground may look the same, the national level economic and political indicators were not accounted for in the model.
-
-We load the model from mlflow where it was pickled as an artifact. Here's some code showing how it was reloaded.
-
-We then input the thailand school points as well as all of the same predictors into the model to be predicted. 
-
-Here are the maps show the schools prediction from 0-100 in Thailand.
-
-Then we aggregated up to a province level as we only have the survey data on that level. This proved challenging for a number of reasons. For one, the level of granularity for the school level is very overshadowed when aggregated to a province level, as there are only 77 provinces within Thailand. It is an unhelpful ground truth to evaluate our predictions which are on a school level. It is therefore hard to know if we can trust our predictions for the schools. 
 

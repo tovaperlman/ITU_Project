@@ -43,3 +43,33 @@ Descriptions taken from the Goole Earth Engine Data Catalog.
 
 4. Facebook API data
 5. Speedtest Data
+
+## Data Dictionary
+
+Show a table of each of the predictors and what their definitions are:
+
+| Variable Name      | Description                          | Data Source  |
+| ----------- | ------------------------------------ |----------------------- |
+| `avg_d_kbp3`       | Average Download Speed | Speedtest Data |
+| `avg_u_kbps`       | Average Upload Speed | Speedtest Data |
+| `estimate_dau`    | Facebook Daily Active Users estimate | Facebook API|
+| `estimate_mau`    | Facebook Daily Active Users estimate |Facebook API|
+| `population`    | Population within a 1 km buffer zone, estimated with  | Population Data |
+| `pop_norm`    | Facebook Daily Active Users estimate | Population Data |
+| `mean_ghm`    | Mean Global Human Modification value | Global Human Modification Index |
+| `mean_avg_rad`    | Mean value from the Average Radiance band | VIIRS Nighttime DNB |
+| `mean_cf_cvg`    | Mean value from the cloud free coverage band |VIIRS Nighttime DNB |
+| `slope_year_avg_rad`    | The yearly rate of change between 2019 and 2014 of Average Radiance |VIIRS Nighttime DNB |
+| `change_year_avg_rad`    | The change between the average values of 2019 and 2014 of Average Radiance |VIIRS Nighttime DNB |
+| `slope_year_cf_cvg`    | The yearly rate of change between 2019 and 2014 from the Cloud Free Coverage Band |VIIRS Nighttime DNB |
+| `change_year_cf_cvg`    | The change between the average values of 2019 and 2014 from the Cloud Free Coverage Band |VIIRS Nighttime DNB |
+| `slope_month_avg_rad`    | The monthly rate of change between 2019 and 2014 of the Average Radiance Band |VIIRS Nighttime DNB |
+| `change_month_avg_rad`    | The change between the average of Dec 2019 and Jan 2014 of the Average Radiance Band |VIIRS Nighttime DNB |
+| `slope_month_cf_cvg`    | The monthly rate of change between 2019 and 2014 from the Cloud Free Coverage Band |VIIRS Nighttime DNB |
+| `change_month_cf_cvg`    | The rate of change between the average of Dec 2019 and Jan 2014 from the Cloud Free Coverage Band |VIIRS Nighttime DNB |
+| `mean_NDVI`    | The average value of the Vegetation Index |MODIS Dataset |
+| `slope_year_NDVI`    | The yearly rate of change between 2019 and 2014 of the Vegetation Index |MODIS Dataset |
+| `change_year_NDVI`    | The change between 2019 and 2014 of the Vegetation Index |MODIS Dataset |
+| `slope_month_NDVI`    | The monthly rate of change between 2019 and 2014 of the Vegetation Index |MODIS Dataset |
+| `change_month_NDVI`    | The change between the average of May 2019 and May 2014 of the Vegetation Index |MODIS Dataset |
+

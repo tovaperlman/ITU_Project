@@ -3,7 +3,7 @@ This is about our project with ITU.
 Who are we?
 
 - Tova Perlman
-![Image](Images/cropped.jpg)
+![Image](Images/cropped.jpg){: style="height:60px;width:60px"}
 
 - Utku Can Ozturk
 - Jonathan Cook

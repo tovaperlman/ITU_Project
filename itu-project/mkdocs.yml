@@ -7,6 +7,7 @@ markdown_extensions:
     custom_checkbox: true
     clickable_checkbox: true
 - pymdownx.superfences
+- attr_list
 
 extra_css:
     - css/extra.css
@@ -20,5 +21,11 @@ nav:
     - Data Gathering: datagat.md
     - Feature Engineering: fe.md
     - Modeling: model.md
+    - Model Application: modapp.md
     - Conclusion: conc.md
-theme: readthedocs
+theme:
+    name: readthedocs
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
