@@ -8,6 +8,7 @@ Who are we?
 - Utku Can Ozturk
 - Jonathan Cook
 - Jacob Beck
+![Image](Images/image0.jpg){: style="height:60px;width:60px"}
 
 Project Mentor:
 Daniel Townsend
