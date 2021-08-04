@@ -22,6 +22,6 @@ The build_tree method is then called to implement Scikit-learn's KDTree package 
 
 It should be noted that the map_feature method should only be used for features that are not sparsely distributed. For example, this method is not used for the Brazil survey data, which is only available for a selection of enumeration areas.
 
-For other features, such as the Brazil survey data, which have values only in sparsely distributed locations, we employ the map_enumeration method, which joins school locations to areas via intersections between the area polygons and 1km radius school buffer zones. We then check for instances in which a school might have been joined to multiple areas and select only the nearest area for such cases.
+For other features, such as the Brazil survey data, which have values only in sparsely distributed locations, we employ the map_enumeration method, which joins school locations to areas via intersections between the enumeration area polygons and 1km radius school buffer zones. We then check for instances in which a school might have been joined to multiple enumeration areas and select only the nearest enumeration area for such cases.
 
 ## Features Used
