@@ -20,6 +20,8 @@ For the unexpected instance in which schools have already been matched to featur
 
 The build_tree method is then called to implement Scikit-learn's KDTree package and thus build a kd tree of the previously defined centroids.This tree is then queried with the school locations to get the nearest neighbours, with the query returning dist (geographic distance) and ind (index associated with this location). The rows in the school_data dataframe are then assigned the correct values for each new column. For any variable named 'range', such as the mobile cell tower range variable from the OpenCellID dataset, values are converted to a 0 or 1, corresponding to range > dist and range <= dist respectively. 
 
-It should be noted that the map_feature method should only be used for features that span the majority of a country.
+It should be noted that the map_feature method should only be used for features that are not sparsely distributed. For example, this method is not used for the Brazil survey data, which is only available for a selection of enumeration areas.
+
+For other features, such as the Brazil survey data, which have values only in sparsely distributed locations, we employ the map_enumeration method, which joins school locations to areas via intersections between the area polygons and 1km radius school buffer zones. We then check for instances in which a school might have been joined to multiple areas and select only the nearest area for such cases.
 
 ## Features Used
