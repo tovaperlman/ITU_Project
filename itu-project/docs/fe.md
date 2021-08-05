@@ -106,7 +106,6 @@ graph TD
   A[Get School Data] --> B{Is Survey Available?};
   B --> |Yes| C[Get Survey Data];
   B --> |No| D[Load Predictor Dataset];
-  C --> D;
   D --> E[Initialise New Columns];
   E --> F[Clean New Data];
   F --> G[Match New Data to Schools];
