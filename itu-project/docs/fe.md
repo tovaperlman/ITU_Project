@@ -26,10 +26,56 @@ It should be noted that the map_feature method should only be used for features 
 For other features, such as the Brazil survey data, which have values only in sparsely distributed locations, we employ the map_enumeration method, which joins school locations to areas via intersections between the enumeration area polygons and 1km radius school buffer zones. We then check for instances in which a school might have been joined to multiple enumeration areas and select only the nearest enumeration area for such cases.
 
 ``` mermaid
-graph LR
-  A[Start] --> B{Error?};
-  B -->|Yes| C[Hmm...];
-  C --> D[Debug];
-  D --> B;
-  B ---->|No| E[Yay!];
+classDiagram
+  OpenData <|-- PopulationData
+  OpenData <|-- SpeedtestData
+  OpenData <|-- FacebookData
+  OpenData <|-- OpenCellData
+  Country <|-- School
+  Country <|-- Survey
+  Survey <|-- BRA_Survey
+  Survey <|-- THA_Survey
+  class OpenData{
+    +set_country_geo()
+  }
+  class PopulationData{
+    +set_pop_data()
+  }
+  class SpeedtestData{
+    +Str type
+    +Int year
+    +Int quarter
+    +set_speedtest_data()
+    +tile_prep()
+  }
+  class FacebookData{
+    +List locations
+    +Str access_token
+    +Str ad_account_id
+    +Int call_limit
+    +Int radius
+    +set_fb_data()
+  }
+  class OpenCellData{
+    +Str access_token
+    +set_cell_data()
+    +call_prep()
+  }
+  class Country{
+    +set_country_geometry()
+  }
+  class School{
+    +Float buffer
+    +set_school_data()
+    +school_prep()
+  }
+  class Survey{
+  }
+  class BRA_Survey{
+    +get_area_links()
+    +set_survey_data()
+  }
+  class THA_Survey{
+    +set_area_data()
+    +set_survey_data()
 ```
