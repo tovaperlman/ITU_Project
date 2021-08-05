@@ -80,6 +80,7 @@ classDiagram
   class THA_Survey{
     +set_area_data()
     +set_survey_data()
+  }
 ```
 
 ## main.py
