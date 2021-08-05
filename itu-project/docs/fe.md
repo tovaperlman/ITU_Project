@@ -44,7 +44,7 @@ classDiagram
     +set_pop_data()
   }
   class SpeedtestData{
-    +Str type
+    +String type
     +Int year
     +Int quarter
     +set_speedtest_data()
@@ -52,14 +52,14 @@ classDiagram
   }
   class FacebookData{
     +List locations
-    +Str access_token
-    +Str ad_account_id
+    +String access_token
+    +String ad_account_id
     +Int call_limit
     +Int radius
     +set_fb_data()
   }
   class OpenCellData{
-    +Str access_token
+    +String access_token
     +set_cell_data()
     +call_prep()
   }
@@ -88,12 +88,10 @@ classDiagram
 graph TD
   A[Get School Data] --> B{Is Survey Available?}
   B --> |Yes| C[Get Survey Data]
-  loop ForEachPredictor
-    B --> |No| D[Load Predictor Dataset]
-    C --> D
-    D --> E[Initialise New Columns]
-    E --> F[Clean New Data]
-    F --> G[Match New Data to Schools]
-  end
+  B --> |No| D[Load Predictor Dataset]
+  C --> D
+  D --> E[Initialise New Columns]
+  E --> F[Clean New Data]
+  F --> G[Match New Data to Schools]
   G --> H[Save Dataset]
 ```
