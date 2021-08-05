@@ -25,6 +25,8 @@ It should be noted that the map_feature method should only be used for features 
 
 For other features, such as the Brazil survey data, which have values only in sparsely distributed locations, we employ the map_enumeration method, which joins school locations to areas via intersections between the enumeration area polygons and 1km radius school buffer zones. We then check for instances in which a school might have been joined to multiple enumeration areas and select only the nearest enumeration area for such cases.
 
+## Data Gathering Classes
+
 ``` mermaid
 classDiagram
   OpenData <|-- PopulationData
@@ -78,4 +80,20 @@ classDiagram
   class THA_Survey{
     +set_area_data()
     +set_survey_data()
+```
+
+## main.py
+
+``` mermaid
+graph TD
+  A[Get School Data] --> B{Is Survey Available?}
+  B --> |Yes| C[Get Survey Data]
+  loop ForEachPredictor
+    B --> |No| D[Load Predictor Dataset]
+    C --> D
+    D --> E[Initialise New Columns]
+    E --> F[Clean New Data]
+    F --> G[Match New Data to Schools]
+  end
+  G --> H[Save Dataset]
 ```
