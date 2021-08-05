@@ -45,8 +45,8 @@ classDiagram
   }
   class SpeedtestData{
     +String type
-    +Int year
-    +Int quarter
+    +int year
+    +int quarter
     +set_speedtest_data()
     +tile_prep()
   }
@@ -54,8 +54,8 @@ classDiagram
     +List locations
     +String access_token
     +String ad_account_id
-    +Int call_limit
-    +Int radius
+    +int call_limit
+    +int radius
     +set_fb_data()
   }
   class OpenCellData{
@@ -86,12 +86,12 @@ classDiagram
 
 ``` mermaid
 graph TD
-  A[Get School Data] --> B{Is Survey Available?}
-  B --> |Yes| C[Get Survey Data]
-  B --> |No| D[Load Predictor Dataset]
-  C --> D
-  D --> E[Initialise New Columns]
-  E --> F[Clean New Data]
-  F --> G[Match New Data to Schools]
-  G --> H[Save Dataset]
+  A[Get School Data] --> B{Is Survey Available?};
+  B --> |Yes| C[Get Survey Data];
+  B --> |No| D[Load Predictor Dataset];
+  C --> D;
+  D --> E[Initialise New Columns];
+  E --> F[Clean New Data];
+  F --> G[Match New Data to Schools];
+  G --> H[Save Dataset];
 ```
