@@ -43,16 +43,12 @@ For other features, such as the Brazil survey data, which have values only in sp
 
 ## Data Gathering Classes
 
-``` mermaid
+<div class='mermaid'>
 classDiagram
   OpenData <|-- PopulationData
   OpenData <|-- SpeedtestData
   OpenData <|-- FacebookData
   OpenData <|-- OpenCellData
-  Country <|-- School
-  Country <|-- Survey
-  Survey <|-- BRA_Survey
-  Survey <|-- THA_Survey
   class OpenData{
     +set_country_geo()
   }
@@ -60,59 +56,65 @@ classDiagram
     +set_pop_data()
   }
   class SpeedtestData{
-    +String type
-    +int year
-    +int quarter
+    +type
+    +year
+    +quarter
     +set_speedtest_data()
     +tile_prep()
   }
   class FacebookData{
-    +List locations
-    +String access_token
-    +String ad_account_id
-    +int call_limit
-    +int radius
+    +locations
+    +access_token
+    +ad_account_id
+    +call_limit
+    +radius
     +set_fb_data()
   }
   class OpenCellData{
-    +String access_token
+    +access_token
     +set_cell_data()
     +call_prep()
   }
-  class Country{
-    +set_country_geometry()
-  }
-  class School{
-    +Float buffer
-    +set_school_data()
-    +school_prep()
-  }
-  class Survey{
-  }
-  class BRA_Survey{
-    +get_area_links()
-    +set_survey_data()
-  }
-  class THA_Survey{
-    +set_area_data()
-    +set_survey_data()
-  }
-```
+</div>
+
+<div class='mermaid'>
+classDiagram
+    Country <|-- School
+    Country <|-- Survey
+    Survey <|-- BRA_Survey
+    Survey <|-- THA_Survey
+    class Country{
+      +set_country_geometry()
+    }
+    class School{
+      +buffer
+      +set_school_data()
+      +school_prep()
+    }
+    class BRA_Survey{
+      +get_area_links()
+      +set_survey_data()
+    }
+    class THA_Survey{
+      +set_area_data()
+      +set_survey_data()
+    }
+  </div>
 
 ## main.py
 
-``` mermaid
+<div class='mermaid'>
 graph TD
   A[Get School Data] --> B{Is Survey Available?};
   B --> |Yes| C[Get Survey Data];
   B --> |No| D[Load Predictor Dataset];
+  C --> E
   D --> E[Initialise New Columns];
   E --> F[Clean New Data];
   F --> G[Match New Data to Schools];
-  G --> H[Save Dataset];
-```
+  G --> H{All Features Added?};
+  H --> |Yes| I[Save Dataset]
+  H --> |No| D;
+</div>
 
-``` mermaid
-graph TD
-  A[Get School Data] --> B[Hello];
-```
+
