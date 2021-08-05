@@ -1,0 +1,25 @@
+# Folder Structure
+
+- files/
+  - src/
+    - scripts/
+      - configs.py
+      - main.py
+      - data_pipeline.py
+      - country.py
+      - opendata.py
+      - school.py
+      - survey.py
+      - opendata_facebook.py
+      - opendata_scrap.py
+  - data/
+    - geodata/
+    - school_loc/
+    - enumeration_area/
+    - fb/
+    - opencellid/
+    - satellite/
+    - speedtest/
+    - survey/
+    - training_sets/
+    - worldpop/
