@@ -1,3 +1,18 @@
+<!-- load mermaid -->
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+<script>
+
+mermaid.initialize({startOnLoad:true});
+
+mermaidAPI.initialize({
+
+securityLevel: 'loose'
+
+});
+
+</script>
 
 # Data Gathering 
 
