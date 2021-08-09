@@ -25,6 +25,8 @@ Having retrieved data of many different types, at different geospatial resolutio
 
 ## Target Variable
 
+Our target variable is ground-truth survey data on local internet connectivity. For the Brazilian and Thai surveys, fowarded to us by ITU, these target variables correspond to the following labels:
+
 * `Brazil` - A4A
 * `Thailand` - H107
 
