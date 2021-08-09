@@ -1,6 +1,6 @@
 # Modeling Section:
 
-The model we need to train is a regression model as we are attempting to predict a number between 0-100 of internet connectivity. Later on, we attempted to turn this into a classification problem to check our work but it did not provide any higher accuracy. 
+The model we need to train is a regression model as we are attempting to predict a number between 0 and 1 of internet connectivity. Later on, we attempted to turn this into a classification problem to check our work but it did not provide any higher accuracy. 
 
 ## Mlflow Set-up
 
@@ -18,7 +18,7 @@ Once we have mlflow set up and our model_config.yaml file set up, we can run man
 
 ## Model Training
 
-We tried out 7 different models in order to determine which model had the best accuracy. We experimented with various parameters, as well as different combinations of predictors. Below is the final list of predictors we used and a heat map displaying their collinearity. As you can see, there is not high multi-collinearity among our predictors. 
+We tried out 7 different models in order to determine which model had the best accuracy. We experimented with various parameters, as well as different combinations of predictors. Below is the final list of predictors we used and a heat map displaying their collinearity. As you can see, there is not high multi-collinearity among our predictors except with the mean global human modification and the mean average radiance. However, we felt both predictors were important and had high feature importance in the model so we decided to keep both in. 
 ![heatmap](Images/heatmap.PNG)
 
 
@@ -27,15 +27,15 @@ Another way that we improved accuracy was by building a custom metric in order t
 
 ![custom_metric](Images/custom_metric.PNG)
 
- We built this as we understood that it was more important to have better accuracy on schools with lower internet connectivity than higher. Before insitituting the custom metric, our models were good with predicting the average values, but they did poorly at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). Secondly, we instituted our custom metric which trained the model to minimize the error score within the 0 - 30 level of predictions. 
+ We built this as we understood that it was more important to have better accuracy on schools with lower internet connectivity than higher. Before insitituting the custom metric, our models were good with predicting the average values, but they did poorly at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). We dropped the zero's because our project partners informed us that they were most likely due to incomplete data and because they skewed our results. Because there were only 23 of them, we felt it did not impact the data class balancing. Secondly, we instituted our custom metric which trained the model to minimize the error score under the .3 level of prediction. 
  
- Our best model had an average error of .06 and for specifically predicting schools below 30% connected, had an average error of .05. This means that for schools that are predicted to be below 30%, we can trust their predictions as on average they are only off by 5 percentage points from the ground truth value. 
+ Our best model had an average error of .06 and specifically for under the .3 threshold, had an average error of .05. This means that for schools that are predicted to be below 30%, we can trust the model's predictions, as on average the predictions are only off by 5 percentage points from the ground truth value. 
 
  Below, you can see the list of all the models we tried. Feel free to try out running these models yourselves or reading the code by clicking on the hyper linked script. There is further documentation within each script on how it runs, and how it works with mlflow logging.
 
 1. Linear Regression (see train_Linear_Regression.py)
-2. Random Forest (See Jupyter Notebook for full training and evaluation of errors)(see also train_Random_Forest_clean.py file, with mlflow logging)
-2. XGBoost (See train_XGBoost_Exp1.py file with mlflow logging)
+2. Random Forest (See Jupyter Notebook for full training and evaluation of errors)(see also train_Random_Forest_clean.py file, with mlflow logging and one without)
+2. XGBoost (See train_XGBoost_Exp1.py file with mlflow logging and without)
 3. LightGBM (See Jupyter Notebook for full training and evaluation of errors)(see also lightgbm_mlflow_train.py)
 5. SVM (see SVM_mlflow_train.py file)
 6. Neural Net (see nn_mlflow_Train.py file)
