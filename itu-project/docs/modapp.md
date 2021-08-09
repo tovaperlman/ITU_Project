@@ -1,27 +1,34 @@
 # Model Application
 
-This is where we show our application of our Brazil model to the Thailand Data and display how well it did.
+## Thailand
 
-Our next big step was applying the best model to Thailand data. We were nervous to apply the model as we were not sure that the same assumptions that are true for Brazil would hold true for Thailand. While the satellite data and ground may look the same, the national level economic and political indicators were not accounted for in the model.
+Our next big step was applying the best model to Thailand data. We were nervous to apply the model as we were not sure that the same assumptions that are true for Brazil would hold true for Thailand. While the satellite data and vegetation may look the same, the national level economic and political indicators were not accounted for in the model. Therefore, we had limitations for our model rooted in our basic assumptions that local areas can be comparable.
 
-We load the model from mlflow where it was pickled as an artifact. Here's some code showing how it was reloaded.
+Our second set of limitations was in the nature of the Thailand data. We wanted to predict and evaluate the Thai schools in the same manner that we did for the Brazil schools. However, the survey data that served as ground truth for Brazil was on an enumeration area level while the survey data for Thailand was on a province area level (of which there are 77 in Thailand). These area units are not comparable and therefore made the evaluation for Thailand more complicated. Below you can see our predictions on a school level which look generally good, though there is no ground truth by which to evaluate. We then scale these school predictions up to a province level. When we get to the province level evaluation, our predictions look much worse. This perhaps can reflect upon our model and its poor performance, but it also reflects on the raw survey data itself as we are skeptical of the amount of provinces that have 100% internet connectivity to begin with. 
+
+Steps in our model application to new data. Please click here for a complete predict.py script: 
+
+2. Using the model_config, we load the test data with the school points and the same predictors used by the original model.
+
+1. Then, we load the model from mlflow where it was pickled as an artifact. Here's some code showing how it was reloaded.
 ![picklefile](Images/thailand_pickle_model.PNG)
 
-We then input the thailand school points as well as all of the same predictors into the model to be predicted. 
-
-Here are the maps show the schools prediction from 0-100 in Thailand.
+3. Then we examine the predictions on a map: 
+Here are the maps that show the schools' predictions from 0-100 in Thailand.
 
 These are all the schools in Thailand, as one can tell it looks pretty good
 ![All_Schools](Images/RF_All_Schools.PNG)
 
-Here are the schoools just below 50% internet connectivity, prediced by the best Random Forest Model. There are 97 schools predicted.
-![RF_Schools](Images/RF_Low_Schools.PNG)
-
-Here are the schoools just below 50% internet connectivity, prediced by the best XGBoost Model. There are 97 schools predicted. It has a slightly different pattern from Random Forest but not completely.
-![XGB_Schools](Images/XGB_Low_Schools.PNG)
+Here are the schoools just below 50% internet connectivity, predicted by the best Random Forest Model and the best XGBoost Model. There are 97 schools predicted in both, but slightly different pattern of schools.
+![RF_Schools](Images/Thailand_schols.PNG)
 
 
-Then we aggregated up to a province level as we only have the survey data on that level. This proved challenging for a number of reasons. For one, the level of granularity for the school level is very overshadowed when aggregated to a province level, as there are only 77 provinces within Thailand. It is an unhelpful ground truth to evaluate our predictions which are on a school level. It is therefore hard to know if we can trust our predictions for the schools. 
+In order to compare our predictions to the ground truth, we aggregated the schools up to a province level as we only have the survey data on that level. This proved challenging for a number of reasons as stated above. 
 
 Here is what our model prediction look like compared to ground truth, as you can tell they are very different from each other:
 ![Thailand_Province](Images/Thailand_province.PNG)
+
+While our mean province level error is .35, which is not terrible, we can see that the model predictions on a province level diverge greatly from the existing ground truth. Therefore, we are uncertain about the ability for our Brazil model to accurately predict schools with low internet connectivity in Thailand.
+
+## Philippines
+We also were able to test this out on the Philippines. The Philippines had better data as their surveys were on an enumeration area level. Here are the results from our Philippines predictions. 

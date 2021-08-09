@@ -1,7 +1,8 @@
 # Introduction
 
-## What is our Problem? 
-jacob tests github
+## What is the problem? 
+Lots of countries around the world, and specific communities within those countries do not have access to the internet. In order to succeed in our fast paced world, it would be beneficial for them to have it. Thus our project seeks 
+
 ## Motivation
 
 Connecting to the internet is extremely important in this day and age. By 2030, Project Giga hopes to have every school in the world to have an internet connection. Internet serves as a crucial background to local economies, economic development and individual's ability to get jobs and communicate with the outside world. 
