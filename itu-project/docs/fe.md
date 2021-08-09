@@ -41,67 +41,7 @@ It should be noted that the map_feature method should only be used for features 
 
 For other features, such as the Brazil survey data, which have values only in sparsely distributed locations, we employ the map_enumeration method, which joins school locations to areas via intersections between the enumeration area polygons and 1km radius school buffer zones. We then check for instances in which a school might have been joined to multiple enumeration areas and select only the nearest enumeration area for such cases.
 
-## Data Gathering Classes
-
-<div class='mermaid'>
-classDiagram
-  OpenData <|-- PopulationData
-  OpenData <|-- SpeedtestData
-  OpenData <|-- FacebookData
-  OpenData <|-- OpenCellData
-  class OpenData{
-    +set_country_geo()
-  }
-  class PopulationData{
-    +set_pop_data()
-  }
-  class SpeedtestData{
-    +type
-    +year
-    +quarter
-    +set_speedtest_data()
-    +tile_prep()
-  }
-  class FacebookData{
-    +locations
-    +access_token
-    +ad_account_id
-    +call_limit
-    +radius
-    +set_fb_data()
-  }
-  class OpenCellData{
-    +access_token
-    +set_cell_data()
-    +call_prep()
-  }
-</div>
-
-<div class='mermaid'>
-classDiagram
-    Country <|-- School
-    Country <|-- Survey
-    Survey <|-- BRA_Survey
-    Survey <|-- THA_Survey
-    class Country{
-      +set_country_geometry()
-    }
-    class School{
-      +buffer
-      +set_school_data()
-      +school_prep()
-    }
-    class BRA_Survey{
-      +get_area_links()
-      +set_survey_data()
-    }
-    class THA_Survey{
-      +set_area_data()
-      +set_survey_data()
-    }
-  </div>
-
-## main.py
+## High Level Feature Engineering Pipeline 
 
 <div class='mermaid'>
 graph TD
