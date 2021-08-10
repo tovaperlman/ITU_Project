@@ -8,13 +8,13 @@ Our second set of limitations was in the nature of the Thailand data. We wanted 
 
 Steps in our model application to new data. Please click here for a complete predict.py script: 
 
-2. Using the model_config, we load the test data with the school points and the same predictors used by the original model.
+2. Using the model_config, we load the Thailand data with the school points and the same predictors used by the original model.
 
 1. Then, we load the model from mlflow where it was pickled as an artifact. Here's some code showing how it was reloaded.
 ![picklefile](Images/thailand_pickle_model.PNG)
 
 3. Then we examine the predictions on a map: 
-Here are the maps that show the schools' predictions from 0-100 in Thailand.
+Here are the maps that show the schools' predictions from 0-1 in Thailand.
 
 These are all the schools in Thailand, as one can tell it looks pretty good
 ![All_Schools](Images/RF_All_Schools.PNG)
