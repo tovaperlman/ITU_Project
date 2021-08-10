@@ -16,7 +16,8 @@ Steps in our model application to new data. Please click here for a complete pre
 3. Then we examine the predictions on a map: 
 Here are the maps that show the schools' predictions from 0-1 in Thailand.
 
-These are all the schools in Thailand, as one can tell it looks pretty good
+These are all the schools in Thailand, as one can tell it looks reasonable.
+
 ![All_Schools](Images/RF_All_Schools.PNG)
 
 Here are the schoools just below 50% internet connectivity, predicted by the best Random Forest Model and the best XGBoost Model. There are 97 schools predicted in both, but slightly different pattern of schools.
