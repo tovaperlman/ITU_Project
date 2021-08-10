@@ -6,11 +6,13 @@ Satellite Images on a National Level for both Brazil and Thailand:
 Here we see that the Average light comes from the big cities in the south for both countries. This predictor later plays a big role in determining internet connectivity.
 ![Brazil and Thailand Average Radiance](Images/Avg_Rad_Brazil_Thailand.PNG)
 
-Click on this [map](Images/avg_rad_schools.html) to see a comparison between school points average radiance in 2014 and in 2019. 
+Click on this [map](Images/avg_rad_layers.html) to see a comparison between school points and the entire country average radiance in 2014 and in 2019. 
 
 2. Cloud Free Band
 This is a second band within the VIIRS Satellite nighttime images. It measures light without clouds or solar illumination. In some ways, specifically in tropical rainforests which both Brazil and Thailand have, it is a better measure of light emittance than the average radiance band. We use both as predictors in our model. Additionally, you see in the maps that the light emittance looks vastly different.  
 ![Brazil and Thailand Cloud Free Coverage](Images/cf_cvg_Brazil_Thailand.PNG)
+
+Click on this [map](Images/cf_cvg_layers.html) to see a comparison between school points and the entire country cloud free coverage in 2014 and in 2019. 
 
 3. [Global Human Modification Map](Images/ghm_map.html)
 

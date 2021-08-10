@@ -58,10 +58,19 @@ Here is a map of our predictions for schools within Brazil. Figure 1 displays th
 ![Brazil_Map_predictions](Images/Brazil_map_pred.PNG)
 
 We also see that our predictions closely mirror the ground truth within the country, as well as an external data source titled Digital 2021: Brazil. Thus we can trust that our model performs well on Brazilian school data. 
+![Comp_pred_real](Images/RF_Comparisons.PNG)
+
+Then we see the residuals compared to reality. This is promising as most residuals hug tightly to the line except for the ones at the very low and high end.
+![Residuals_reality](Images/RF_Comp_Residuals_.PNG)
+
+Lastly, we also see the comparison of distributions between reality and predictions. While the predictions are a bit higher, the overall curves generally follow each other.
+![distributions]((Images/reality_pred_comp.PNG))
 
 Ask Jacob about prediction 1 vs 2 ?
 
 ![Brazil_Table](Images/Brazil_table.PNG)
+
+Lastly, we can see our residuals plotted again the ground truth. In the first image, we see the Random Forest model predictions against the ground truth, for the most part the predictions are close with the ground truth except in the lower threshold area. 
 
 
 ## Model Interpretation
