@@ -6,7 +6,8 @@ Our next big step was applying the best model to Thailand data. We were curious 
 
 Our second set of limitations was in the nature of the Thailand data. We wanted to predict and evaluate the Thai schools in the same manner that we did for the Brazil schools. However, the survey data that served as ground truth for Brazil was on an enumeration area level while the survey data for Thailand was on a province area level (of which there are 77 in Thailand). These area units are not comparable and therefore made the evaluation for Thailand more complicated. Below you can see our predictions on a school level which look generally good, though there is no ground truth by which to evaluate. We then scale these school predictions up to a province level. When we get to the province level evaluation, our predictions look much worse. This perhaps can reflect upon our model and its questionable performance, but it also reflects on the raw survey data itself as we are skeptical of the amount of provinces that have 100% internet connectivity to begin with. 
 
-Steps in our model application to new data. Please click here for a complete predict.py script: 
+Steps in our model application to new data. Please click here for a complete predict.py script.
+[Click here](scripts/Thailand Predictions_ XGBoost_Model.ipynb) for a Jupyter notebook with the XGBoost Predictions and [its html](scripts/Thailand Predictions_ XGBoost_Model.html) equivalent. 
 
 2. Using the model_config, we load the Thailand data with the school points and the same predictors used by the original model.
 
