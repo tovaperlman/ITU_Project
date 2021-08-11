@@ -1,6 +1,4 @@
-# Conclusion
-
-## Discussion
+# Discussion
 
 ## Limitations
 

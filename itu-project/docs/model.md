@@ -2,6 +2,9 @@
 
 The model we need to train is a regression model as we are attempting to predict a number between 0 and 1 of internet connectivity. A result or prediction of 0 means that of the households surveyed (about 11), no households in the enumeration area stated that they had access to internet. A result or prediction of 1 means that every household surveyed in the enumeration area had access to internet. Most responses fell on a scale between 0 and 1, indicating that some but not all families had internet access. Later on, we attempted to turn this into a classification problem to check our work but it did not provide any higher accuracy. 
 
+## Training Set EDA
+We also did some Exploratory Data Analysis once our training dataset was created. [Click Here](scripts/testing.html) for the full notebook of explanatory visualizations. [Click here](scripts/testing.ipynb) for the Jupyter Notebook .ipynb file. 
+
 ## Mlflow Set-up (Optional)
 
 In order to track our models, we set up autologging in mlflow. [Mlflow](https://www.mlflow.org/docs/latest/index.html) is an exciting and experimental way of logging models. We set up our model training so that our python script for each model would create a new experiment for each run, it would log each of our model parameters when we did hyperparameter tuning and then log the best parameter at the top. In this way we were able to compare the various parameters logged in each run to determine how to change the grid space of the hyperparameters. We also were then able to compare models to each other. Within mlflow, we also logged the predictors for each run and the requirements for packages and dependencies to run. Each run also logs the best model as an artifact, so one can easily take the model and apply it to new data. We are including both the best model logged, as well as each run, here in order to make this as reproducible as possible. Below you can see a screenshot of a mlflow which logs our best runs, with our best hyperparameters and using our custom metric for evaluation.  On the side, you can also see the list of other experiments we ran with different models. 
@@ -40,6 +43,7 @@ Another way that we improved accuracy was by building a custom metric in order t
  Below, you can see the list of all the model classes we tried. Feel free to try out running these models yourselves or reading the code by clicking on the hyper linked script. There is further documentation within each script on how it runs, and how it works with mlflow logging.
 
 1. Linear Regression (see train_Linear_Regression.py)
+    -[Python script with Mlflow](scripts/train_Linear_Regression.py) #is this right?
 2. Random Forest 
     - [HTML File](scripts/Training_Random_Forest.html)
     - [Jupyter Notebook](scripts/Training_Random_Forest.ipynb)
@@ -47,26 +51,34 @@ Another way that we improved accuracy was by building a custom metric in order t
     - [Python script without Mlflow](scripts/train_Random_Forest_clean.py)
 2. XGBoost (See train_XGBoost_Exp1.py file with mlflow logging and without)
     - [HTML File](scripts/training_XGBoost.html)
-    - [Jupyter Notebook](scripts/training_XGBoost.ipynb)
+    - [Jupyter Notebook](scripts/training_XGBoost.ipynb) #this is not correct
     - [Python Script with Mlflow](scripts/train_XGBoost_no_mlflow.py) 
     - [Python script without Mlflow](scripts/train_XGBoost_Exp1.py)
 3. LightGBM (See Jupyter Notebook for full training and evaluation of errors)(see also lightgbm_mlflow_train.py)
     - [HTML File](scripts/Light_GBM_Notebook.html)
     - [Jupyter Notebook](scripts/Light_GBM_Notebook.ipynb)
     - [Python Script with Mlflow](scripts/lightgbm_mlflow_train.py)
-5. SVM (see SVM_mlflow_train.py file)
-6. Neural Net (see nn_mlflow_Train.py file)
+5. SVM
+    - [Python Script with Mlflow](scripts/SVM_mlflow_train.py)
+6. Neural Net
+    - [Python Script with Mlflow](scripts/nn_mlflow_Train.py.py)
 7. Random Forest Classifier (See Jupyter Notebook for training, was used as a check on other models)
+    - [HTML File](scripts/training_RF_classifier.html)
+    - [Jupyter Notebook](scripts/training_RF_classifier.ipynb)
 
 Here we see a comparison of all the models. It is clear that Random Forest and XGBoost both have the lowest average error among all the models, therefore they are the winners. 
-Click on this link to see a notebook with the model comparisons (Also save as HTML to embed into documentation)
+[Click on this link](scripts/Model_Comparisons_keep.ipynb) to see a notebook with the model comparisons. [Click here](scripts/Model_Comparisons_keep.html) for the HTML version. 
 ![model_graph](Images/model_graph.PNG)
 
 ## Model Evaluation and Results 
 
+Below we see a comparison of all the models. It is clear that Random Forest and XGBoost both have the lowest average error among all the models, therefore they are the winners. 
+[Click on this link](scripts/Model_Comparisons_keep.ipynb) to see a notebook with the model comparisons. [Click here](scripts/Model_Comparisons_keep.html) for the HTML version. 
+![model_graph](Images/model_graph.PNG)
+
 As you can see from the above graph, our winning model was the XGboost model which produced an error of .06 and a low average error of .05 with the hyper parameters of: eta: .2, max_depth: 9, n_estimators: 550. 
 
-Click on this link for the notebook with the Random Forest Predictions and click on this link for the notebook with the XGBoost Predictions.
+Click on this link for the notebook with the [Random Forest Predictions](scripts/Thailand Predictions_ XGBoost_Model.html) and click on this link for the notebook with the [XGBoost Predictions](scripts/Thailand Predictions_ XGBoost_Model.html).
 
 Here is a map of our predictions for schools within Brazil. Figure 1 displays the location for all the schools were the ground truth is less than 30% connected to the internet. There are 69 schools in Brazil that have less than 30% internet connectivity. Figure 2 shows the errors in schools where the prediction is less than 30% connected to the internet. While we can see that there are fewer schools that are predicted than that exist, we can trust that our predictions are correct, as the error score is low. This map was made using the Random Forest model which predicts 14 schools. The XGBoost model predicts 29 schools below 30%. Additionally, our predicted schools match up with our ground truth schools. In Figure 3, we see the predictions for all the schools in the test set mapped out. This gives us an understanding of where the higher and lower connected schools are located regionally. It appears that the higher connected schools are on the coast (the yellows and light greens) while the lower connected schools are located more inland. In Figure 4, we see the errors mapped out for the schools in the test set. As we can see most schools have a low error score, which means we can mostly trust the predictions. The schools with higher error scores are also the schools that have less connectivity, which provides even more motivation to use our custom metric as we want to focus on having a lower error score for schools that are less connected. Thus the 14 schools depicted in Figure 2 are the ones that one could prioritize to connect. 
 
