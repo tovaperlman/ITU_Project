@@ -36,9 +36,20 @@ Another way that we improved accuracy was by building a custom metric in order t
  Below, you can see the list of all the model classes we tried. Feel free to try out running these models yourselves or reading the code by clicking on the hyper linked script. There is further documentation within each script on how it runs, and how it works with mlflow logging.
 
 1. Linear Regression (see train_Linear_Regression.py)
-2. Random Forest (See Jupyter Notebook for full training and evaluation of errors)(see also train_Random_Forest_clean.py file, with mlflow logging and one without)
+2. Random Forest 
+    - [HTML File](scripts/Training_Random_Forest.html)
+    - [Jupyter Notebook](scripts/Training_Random_Forest.ipynb)
+    - [Python Script with Mlflow](scripts/train_Random_Forest_no_mlflow2.py) 
+    - [Python script without Mlflow](scripts/train_Random_Forest_clean.py)
 2. XGBoost (See train_XGBoost_Exp1.py file with mlflow logging and without)
+    - [HTML File](scripts/training_XGBoost.html)
+    - [Jupyter Notebook](scripts/training_XGBoost.ipynb)
+    - [Python Script with Mlflow](scripts/train_XGBoost_no_mlflow.py) 
+    - [Python script without Mlflow](scripts/train_XGBoost_Exp1.py)
 3. LightGBM (See Jupyter Notebook for full training and evaluation of errors)(see also lightgbm_mlflow_train.py)
+    - [HTML File](scripts/Light_GBM_Notebook.html)
+    - [Jupyter Notebook](scripts/Light_GBM_Notebook.ipynb)
+    - [Python Script with Mlflow](scripts/lightgbm_mlflow_train.py)
 5. SVM (see SVM_mlflow_train.py file)
 6. Neural Net (see nn_mlflow_Train.py file)
 7. Random Forest Classifier (See Jupyter Notebook for training, was used as a check on other models)
