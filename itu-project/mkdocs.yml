@@ -14,8 +14,7 @@ markdown_extensions:
 - attr_list
 
 extra_css:
-    - css/extra.css
-    - css/second_extra.css
+  - stylesheets/extra.css
 
 nav:
     - Home: index.md
@@ -28,7 +27,10 @@ nav:
     - Model Application: modapp.md
     - Conclusion: conc.md
 theme:
-    name: readthedocs
+    # name: readthedocs
+    name: material
+    features:
+     - toc.integrate
     highlightjs: true
     hljs_languages:
         - yaml
