@@ -244,13 +244,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-problem" class="md-nav__link">
-    What is the problem?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#motivation" class="md-nav__link">
     Motivation
   </a>
@@ -282,6 +275,51 @@
     <li class="md-nav__item">
       <a href="../eda/" class="md-nav__link">
         Exploratory Data Analysis
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configs/" class="md-nav__link">
+        Configurations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_dictionaries/" class="md-nav__link">
+        Data Dictionaries
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_processing/" class="md-nav__link">
+        Data Processing Guide
       </a>
     </li>
   
@@ -356,7 +394,7 @@
   
     <li class="md-nav__item">
       <a href="../conc/" class="md-nav__link">
-        Conclusion
+        Discussion
       </a>
     </li>
   
@@ -376,14 +414,15 @@
                 
                 
                 <h1 id="introduction">Introduction</h1>
-<h2 id="what-is-the-problem">What is the problem?</h2>
-<p>Lots of countries around the world, and specific communities within those countries do not have access to the internet. In order to succeed in our fast paced world, it would be beneficial for them to have it. Thus our project seeks to accurately identify schools and communities lacking internet access in order to help Project Giga reach them efficiently.</p>
 <h2 id="motivation">Motivation</h2>
-<p>Connecting to the internet is extremely important in this day and age. By 2030, Project Giga hopes to have every school in the world to have an internet connection. Internet serves as a crucial background to local economies, economic development and individual's ability to get jobs and communicate with the outside world. </p>
+<p>To this date, just six out of ten people on the globe have access to the internet. In today's fast paced, digital world being offline excludes individuals from large parts of social life. The capabilities of the internet have largely surmounted mere communication, as it grants access to global knowledge, political participation and new economic areas. The internet has been shown to be a crucial background to human and economic development in the past. Therefore Giga Initiative, originated by the International Telecommunication Union (ITU) and UNICEF, has set its goal to connect every school to the internet until 2030. </p>
+<p>Giving students the opportunity to access and explore the internet prevents transferring inequalities to the future, as basic online knowledge and skills will be essential to participate in the globalized world. In addition to that, schools often serve as community hubs for the entire population around it and are capable of granting them access to the online world. Using the internet necessarily requires an online device and electricity, however individuals might not have the resources for this investment. Being able to use a school's internet devices can yield basic connectivity for a large number of people.</p>
+<p>Nevertheless, connecting schools in random order (e.g. from A to Z) does not allocate resources where they are most needed. Connecting schools that are most visible or apply for a connection could potentially even aggravate disparities within a country, since offline communities are typically hard-to-target.  Therefore, our project aims to provide a resonable priorization mechanism, to determine which school's connection would positively affect the largest number of individuals. </p>
 <h2 id="use-case">Use Case</h2>
-<p>We are trying to predict multiple objectives. Our first objective is to determine on a scale of 0 to 1, the proportion of internet users in a specific area of a country. We are using schools as the anchor points of these predictions as they are also community hubs. Therefore our predictions seek to determine the level of internet connectivity around a school in order to help Project Giga prioritize which schools to connect.</p>
-<p>Intenet Connectivity in this instance is defined as any ability to get online. This means both broadband and mobile internet connection. Additionally, it means that individuals must have devices to be able to connect to the internet.</p>
-<p>Our second objective, for ITU, is to aggregate our understanding of internet connectivity on a school level up to a country level. While this is not helpful for some countries where national level internet statistics already exist, it will be helpful in countries where there are not currently surveys or established statistics. Our model will establish a baseline metric for a country and build greater understanding of countries that have lower or high internet connectivity. </p>
+<p>We are trying to create multiple objectives. First, we are aiming to determine the share of households/individuals with internet connectivity around a school. Internet connectivity in this instance is defined as any ability to get online. This means both broadband and mobile internet connection. Additionally, it means that individuals must have devices to be able to connect to the internet.
+In a next step, we are taking the absolute population number around the school into account and are then able to estimate the offline population around a school. A prioritizing list of all schools featured can then be provided, that reasonably suggests where resource allocation creates the largest benefit. Possibly even the feasability of connection could be regarded in this process, as previous school location databases have had information on computer availability in a school. Schools that already have electricity and computer access should be less complex to be provided with internet.</p>
+<p>Our second objective, for ITU, is to aggregate our understanding of internet connectivity on a school level up to a country level. While this might already exist for many countries, it will be helpful in countries where there are currently no surveys or established statistics at hand. Furthermore, an elaborate prediction has the potential to even be more accurate or more complete than a national survey. Our model will establish a baseline metric for a country and build greater understanding of countries that have lower or high internet connectivity. The geographical nature of analysis also makes it possible to detect regional and local differences.</p>
+<p>Ultimately, we are contributing to the field of offline population research. We gain fruitful insights on which features and models are most efficient in predicting internet connectivtiy, which can be used by researchers and organizations. We document our processes and analyses and eventually interpret and discuss our findings. The collection of scripts and documentation can be cloned via the GitHub repository (link). </p>
                 
               
               

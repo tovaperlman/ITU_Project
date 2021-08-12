@@ -241,6 +241,51 @@
   
   
     <li class="md-nav__item">
+      <a href="../configs/" class="md-nav__link">
+        Configurations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_dictionaries/" class="md-nav__link">
+        Data Dictionaries
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_processing/" class="md-nav__link">
+        Data Processing Guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../datagat/" class="md-nav__link">
         Data Gathering
       </a>
@@ -349,7 +394,7 @@
   
     <li class="md-nav__item">
       <a href="../conc/" class="md-nav__link">
-        Conclusion
+        Discussion
       </a>
     </li>
   
@@ -372,7 +417,8 @@
 <h2 id="thailand">Thailand</h2>
 <p>Our next big step was applying the best model to Thailand data. We were curious to apply the model as we were not sure that the same assumptions that are true for Brazil would hold true for Thailand. While the satellite data and vegetation may look the same, the national level economic and political indicators were not accounted for in the model. This is because, due to the project scope and capacity, we did not train multiple different national models. Had we had more time and data, perhaps this would have been an alternative route and we could have included some of this information. Instead, we trained a model exclusively on Brazil. For more discussion on future multi-national models, please see the conclusion. Therefore, the limitations for our model rooted in basic assumptions that local areas can be comparable.</p>
 <p>Our second set of limitations was in the nature of the Thailand data. We wanted to predict and evaluate the Thai schools in the same manner that we did for the Brazil schools. However, the survey data that served as ground truth for Brazil was on an enumeration area level while the survey data for Thailand was on a province area level (of which there are 77 in Thailand). These area units are not comparable and therefore made the evaluation for Thailand more complicated. Below you can see our predictions on a school level which look generally good, though there is no ground truth by which to evaluate. We then scale these school predictions up to a province level. When we get to the province level evaluation, our predictions look much worse. This perhaps can reflect upon our model and its questionable performance, but it also reflects on the raw survey data itself as we are skeptical of the amount of provinces that have 100% internet connectivity to begin with. </p>
-<p>Steps in our model application to new data. Please click here for a complete predict.py script: </p>
+<p>Steps in our model application to new data. Please click here for a complete predict.py script.
+<a href="../scripts/Thailand%20Predictions_%20XGBoost_Model.ipynb">Click here</a> for a Jupyter notebook with the XGBoost Predictions and <a href="../scripts/Thailand%20Predictions_%20XGBoost_Model.html">its html</a> equivalent. </p>
 <ol>
 <li>
 <p>Using the model_config, we load the Thailand data with the school points and the same predictors used by the original model.</p>
@@ -431,13 +477,13 @@ Here are the maps that show the schools' predictions from 0-1 in Thailand.</p>
       
       
         
-        <a href="../conc/" class="md-footer__link md-footer__link--next" aria-label="Next: Conclusion" rel="next">
+        <a href="../conc/" class="md-footer__link md-footer__link--next" aria-label="Next: Discussion" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Conclusion
+              Discussion
             </div>
           </div>
           <div class="md-footer__button md-icon">
