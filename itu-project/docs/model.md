@@ -28,7 +28,7 @@ Here you can see the simplicity of reload the model artifact later on and applyi
 
 
 ## Model Configuration
-Once we have mlflow set up and our model_config.yaml file set up, we can run many different experiments using our .py scripts by changing a few things within our yaml file. Click here (INSERT YAML Script) to see the full yaml file. Below you can also see how it was set up. We use this to steer our scripts and set our parameters. We set up the input data at the top which is our training data, then label the target and predictor variables as well as the name of the experiment and a brief description in run_name. Under the parameters section, we set parameters like test size (which is crucial), the amount of cross validation folds to do, the number of iterations and the threshold for our custom metric. The threshold tells the model which percent of schools with low internet connectivity to focus on. Then within parameters, there are different sections based on what type of model you might decide to run. Our .yaml file contains parameters for grid search within Random Forest, LightGBM and XGBoost.
+Once we have mlflow set up and our model_config.yaml file set up, we can run many different experiments using our .py scripts by changing a few things within our yaml file. [Click here](scripts/model_config.yaml) to see the full yaml file. Below you can also see how it was set up. We use this to steer our scripts and set our parameters. We set up the input data at the top which is our training data, then label the target and predictor variables as well as the name of the experiment and a brief description in run_name. Under the parameters section, we set parameters like test size (which is crucial), the amount of cross validation folds to do, the number of iterations and the threshold for our custom metric. The threshold tells the model which percent of schools with low internet connectivity to focus on. Then within parameters, there are different sections based on what type of model you might decide to run. Our .yaml file contains parameters for grid search within Random Forest, LightGBM and XGBoost.
 
 ![model_config](Images/model_config_yaml.PNG)
 
@@ -44,7 +44,7 @@ In this figure, one can see the correlation between predictors and our target va
 
 Another way that we improved accuracy was by building a custom metric in order to score both our test set within our cross validation and our final holdout set. The metric calculates errors specifically by taking the prediction below .3 (or another threshold, we also experimented with .5) subtracting that from the ground truth below .3 (or another threshold), taking the absolute value and then returning the average of all those errors. Below please find a code snippet of our custom metric.
 
-        `#Create custom scoring
+        #Create custom scoring
             def custom_eval_metric(y_true, y_pred):
             errors_low = abs(y_pred[y_pred<0.3] - np.asarray(y_true[y_pred<0.3]).flatten())
             return np.mean(errors_low)
@@ -54,7 +54,7 @@ Another way that we improved accuracy was by building a custom metric in order t
         # define grid search
         search = GridSearchCV(model, parameters, scoring = custom_scorer, cv = inner_cv ,
                                     refit=True,
-                                    verbose = 2)`
+                                    verbose = 2)
 
  We built this as we understood that it was more important to have better accuracy on schools with lower internet connectivity than higher connectivity. Before insitituting the custom metric, our models were good with predicting the average values, but they did poorly at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). We dropped the zero's because our project partners informed us that they were most likely due to incomplete data and because they skewed our results. Because there were only 23 of them, we felt it did not impact the data class balancing. Secondly, we instituted our custom metric which trained the model to minimize the error score under the .3 level of prediction. 
  
@@ -79,12 +79,12 @@ Another way that we improved accuracy was by building a custom metric in order t
     - [Jupyter Notebook](scripts/Light_GBM_Notebook.ipynb)
     - [Python Script with Mlflow](scripts/lightgbm_mlflow_train.py)
 5. SVM
-    - [Python Script with Mlflow](scripts/SVM_mlflow_train.py)
+    - [Python Script with Mlflow](scripts/svm_mlflow_train.py)
 6. Neural Net
-    - [Python Script with Mlflow](scripts/nn_mlflow_Train.py.py)
+    - [Python Script with Mlflow](scripts/nn_mlflow_Train.py)
 7. Random Forest Classifier 
     - [HTML File](scripts/training_RF_classifier.html)
-    - [Jupyter Notebook](scripts/training_RF_classifier.ipynb)
+    - [Jupyter Notebook](scripts/Training_Random_Forest_Classifier_v2.ipynb)
 
 
 ## Model Evaluation and Results 
@@ -115,7 +115,6 @@ Lastly, we also see the comparison of distributions between reality and predicti
 
 ![distributions](Images/reality_pred_comp.PNG)
 
-Lastly, we can see our residuals plotted again the ground truth. In the first image, we see the Random Forest model predictions against the ground truth, for the most part the predictions are close with the ground truth except in the lower threshold area. 
 
 
 ## Model Interpretation
