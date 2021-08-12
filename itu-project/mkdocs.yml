@@ -21,6 +21,9 @@ nav:
     - About the Team: about.md
     - Introduction: intro.md
     - Exploratory Data Analysis: eda.md
+    - Configurations: configs.md
+    - Data Dictionaries: data_dictionaries.md
+    - Data Processing Guide: data_processing.md
     - Data Gathering: datagat.md
     - Feature Engineering: fe.md
     - Modeling: model.md
