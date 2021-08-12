@@ -25,7 +25,7 @@ nav:
     - Feature Engineering: fe.md
     - Modeling: model.md
     - Model Application: modapp.md
-    - Conclusion: conc.md
+    - Discussion: conc.md
 theme:
     # name: readthedocs
     name: material

@@ -1,5 +1,3 @@
-## Conclusion
-
 We have gained a variety of insights that can be used in future research and extension of the analyses. While our technical and methodological learnings have been outlined in the previous sections, the following conclusion will briefly provide a business interpretation of the project and then discuss limitations and possible next steps. 
 
 ### Business Interpretation 
