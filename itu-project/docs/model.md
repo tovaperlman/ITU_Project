@@ -62,8 +62,8 @@ Another way that we improved accuracy was by building a custom metric in order t
 
  Below, you can see the list of all the model classes we tried. Feel free to try out running these models yourselves or reading the code by clicking on the hyper linked script. There is further documentation within each script on how it runs, and how it works with mlflow logging.
 
-1. Linear Regression (see train_Linear_Regression.py)
-    - [Python script with Mlflow](scripts/train_Linear_Regression.py) #is this right?
+1. Linear Regression
+    - [Python script with Mlflow](scripts/train_Linear_Regression.py)
 2. Random Forest 
     - [HTML File](scripts/Training_Random_Forest.html)
     - [Jupyter Notebook](scripts/Training_Random_Forest.ipynb)
@@ -75,8 +75,8 @@ Another way that we improved accuracy was by building a custom metric in order t
     - [Python Script with Mlflow](scripts/train_XGBoost_no_mlflow.py) 
     - [Python script without Mlflow](scripts/train_XGBoost_Exp1.py)
 3. LightGBM 
-    - [HTML File](scripts/Light_GBM_Notebook.html)
-    - [Jupyter Notebook](scripts/Light_GBM_Notebook.ipynb)
+    - [HTML File](scripts/Training_Light_GBM.html)
+    - [Jupyter Notebook](scripts/Training_Light_GBM.ipynb)
     - [Python Script with Mlflow](scripts/lightgbm_mlflow_train.py)
 5. SVM
     - [Python Script with Mlflow](scripts/svm_mlflow_train.py)
