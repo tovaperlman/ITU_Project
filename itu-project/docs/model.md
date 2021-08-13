@@ -81,7 +81,7 @@ Another way that we improved accuracy was by building a custom metric in order t
 5. SVM
     - [Python Script with Mlflow](scripts/svm_mlflow_train.py)
 6. Neural Net
-    - [Python Script with Mlflow](scripts/nn_mlflow_Train.py)
+    - [Python Script with Mlflow](scripts/nn_mlflow_train.py)
 7. Random Forest Classifier 
     - [HTML File](scripts/training_RF_classifier.html)
     - [Jupyter Notebook](scripts/Training_Random_Forest_Classifier_v2.ipynb)

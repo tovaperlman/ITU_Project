@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#exploratory-data-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -227,11 +232,116 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Exploratory Data Analysis
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Exploratory Data Analysis
       </a>
       
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#satellite-data" class="md-nav__link">
+    Satellite Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speedtest-data" class="md-nav__link">
+    Speedtest data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#open-cell-id-data" class="md-nav__link">
+    Open Cell ID data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#facebook-data" class="md-nav__link">
+    Facebook Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-set-eda" class="md-nav__link">
+    Training Set EDA
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configs/" class="md-nav__link">
+        Configurations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_dictionaries/" class="md-nav__link">
+        Data Dictionaries
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_processing/" class="md-nav__link">
+        Data Processing Guide
+      </a>
     </li>
   
 
@@ -305,7 +415,7 @@
   
     <li class="md-nav__item">
       <a href="../conc/" class="md-nav__link">
-        Conclusion
+        Discussion
       </a>
     </li>
   
@@ -324,49 +434,45 @@
               
                 
                 
-                  <h1>Exploratory Data Analysis</h1>
-                
-                <p>The first thing we wanted to explore in our Exploratory Data Analysis was some maps of what our countries looked like and how our predictors might map onto our countries. We used Google Earth Engine to create some maps of nighttime imagery, the global human modification index and the vegetation index. For nighttime and vegetation index, we also wanted to show the change in time as we were using the rate of change as a predictor as well. Below you will find some static images of the maps we created. If you click on them, you can also find an interactive version. <a href="../scripts/Satellite_Data_EDA.ipynb">Click here</a> to see the Jupyter notebook with code included for replicating the maps below and <a href="../scripts/Satellite_Data_EDA.html">here for the html version</a>. </p>
+                <h1 id="exploratory-data-analysis">Exploratory Data Analysis</h1>
+<h2 id="satellite-data">Satellite Data</h2>
+<p>The first thing we wanted to explore in our Exploratory Data Analysis was some maps of what our countries looked like and how our predictors might map onto our countries. We used Google Earth Engine to create some maps of nighttime imagery, the global human modification index and the vegetation index. For nighttime and vegetation index, we also wanted to show the change in time as we were using the rate of change as a predictor as well. Below you will find some static images of the maps we created. If you click on them, you can also find an interactive version. <a href="../scripts/Satellite_Data_EDA.ipynb">Click here</a> to see the Jupyter notebook with code included for replicating the maps below and <a href="../scripts/Satellite_Data_EDA.html">here for the html version</a>. </p>
 <p>Satellite Images on a National Level for both Brazil and Thailand:</p>
 <ol>
-<li>Average Radiance Band
-Here we see that the Average light comes from the big cities in the south for both countries. This predictor later plays a big role in determining internet connectivity.
-<img alt="Brazil and Thailand Average Radiance" src="../Images/Avg_Rad_Brazil_Thailand.PNG" /></li>
+<li>
+<p>Average Radiance Band <br></br>
+    Here we see that the Average light comes from the big cities in the south for both countries. This predictor later plays a big role in determining internet connectivity. <a href="../Images/avg_rad_layers.html">Click on this map</a> to see a comparison between school points and the entire country average radiance in 2014 and in 2019. <br></br>
+    <img alt="Brazil and Thailand Average Radiance" src="../Images/Avg_Rad_Brazil_Thailand.PNG" /></p>
+</li>
+<li>
+<p>Cloud Free Band <br></br>
+    This is a second band within the VIIRS Satellite nighttime images. It measures light without clouds or solar illumination. In some ways, specifically in tropical rainforests which both Brazil and Thailand have, it is a better measure of light emittance than the average radiance band. We use both as predictors in our model. Additionally, you see in the maps that the light emittance looks vastly different.  <a href="../Images/cf_cvg_layers.html">Click on this map</a> to see a comparison between school points and the entire country cloud free coverage in 2014 and in 2019. <br></br>
+    <img alt="Brazil and Thailand Cloud Free Coverage" src="../Images/cf_cvg_Brazil_Thailand.PNG" /></p>
+</li>
+<li>
+<p><a href="../Images/ghm_map.html">Global Human Modification Map</a></p>
+</li>
 </ol>
-<p><a href="../Images/avg_rad_layers.html">Click on this map</a> to see a comparison between school points and the entire country average radiance in 2014 and in 2019. </p>
-<ol>
-<li>Cloud Free Band
-This is a second band within the VIIRS Satellite nighttime images. It measures light without clouds or solar illumination. In some ways, specifically in tropical rainforests which both Brazil and Thailand have, it is a better measure of light emittance than the average radiance band. We use both as predictors in our model. Additionally, you see in the maps that the light emittance looks vastly different.<br />
-<img alt="Brazil and Thailand Cloud Free Coverage" src="../Images/cf_cvg_Brazil_Thailand.PNG" /></li>
-</ol>
-<p><a href="../Images/cf_cvg_layers.html">Click on this map</a> to see a comparison between school points and the entire country cloud free coverage in 2014 and in 2019. </p>
-<ol>
-<li><a href="../Images/ghm_map.html">Global Human Modification Map</a></li>
-</ol>
-<p>In this map, we see the level of Global Human Modification in the last few years within both Brazil and Thailand. For more information on how this dataset was compiled, please see the Data Gathering page. 
+<p>In this map, we see the level of Global Human Modification in the last few years within both Brazil and Thailand. For more information on how this dataset was compiled, please see the Data Gathering page. Click on this <a href="../Images/Brazil_GHM.html">Brazil Map</a> to see the country level data. <br></br>
 <img alt="GHM_Map" src="../Images/GHM_Schools.PNG" /></p>
-<p>Here you can also examine the entire country:
-<a href="../Images/Brazil_GHM.html">Brazil Map</a>
-<img alt="Brazil" src="../Images/GHM_Brazil_Thailand.PNG" /></p>
+<p><img alt="Brazil" src="../Images/GHM_Brazil_Thailand.PNG" /></p>
 <ol>
 <li>
-<p>Normalized Difference Vegetation Index
-Here we see the difference in vegetation between Brazil and Thailand. <a href="../Images/NDVI_Brazil.html">Click here</a> to see the map for Brazil, toggle between the layers to see the entire country and just the school point areas. 
+<p>Normalized Difference Vegetation Index <br></br>
+Here we see the difference in vegetation between Brazil and Thailand. <a href="../Images/NDVI_Brazil.html">Click here</a> to see the map for Brazil, toggle between the layers to see the entire country and just the school point areas. <br></br>
 <img alt="NDVI" src="../Images/NDVI.PNG" /></p>
 </li>
 <li>
-<p>Map depicting NDVI change</p>
-</li>
-</ol>
-<p>Here we also see a GIF that shows the time series change of Vegetation from 2000 to 2021. </p>
+<p>Here we also see GIFs that show the time series change of vegetation from 2000 to 2021. </p>
 <p><img alt="Brazil_GIF" src="../Images/Brazil_output.gif" /></p>
 <p><img alt="Thailand_GIF" src="../Images/output.gif" /></p>
-<p>Speedtest data</p>
-<p>Cell data</p>
-<p>Facebook Data?</p>
-<ol>
-<li>We also did some Exploratory Data Analysis once our training dataset was created. <a href="../scripts/testing.html">Click Here</a> for the full notebook of explanatory visualizations. <a href="../scripts/testing.ipynb">Click here</a> for the Jupyter Notebook .ipynb file. </li>
+</li>
 </ol>
+<h2 id="speedtest-data">Speedtest data</h2>
+<h2 id="open-cell-id-data">Open Cell ID data</h2>
+<h2 id="facebook-data">Facebook Data</h2>
+<h2 id="training-set-eda">Training Set EDA</h2>
+<p>We also did some Exploratory Data Analysis once our training dataset was created. <a href="../scripts/testing.html">Click Here</a> for the full notebook of explanatory visualizations. <a href="../scripts/testing.ipynb">Click here</a> for the Jupyter Notebook .ipynb file. </p>
                 
               
               
@@ -402,13 +508,13 @@ Here we see the difference in vegetation between Brazil and Thailand. <a href=".
       
       
         
-        <a href="../datagat/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Gathering" rel="next">
+        <a href="../configs/" class="md-footer__link md-footer__link--next" aria-label="Next: Configurations" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Data Gathering
+              Configurations
             </div>
           </div>
           <div class="md-footer__button md-icon">

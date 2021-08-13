@@ -241,6 +241,61 @@
   
   
     <li class="md-nav__item">
+      <a href="../configs/" class="md-nav__link">
+        Configurations
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Data Dictionaries
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data_processing/" class="md-nav__link">
+        Data Processing Guide
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../datagat/" class="md-nav__link">
         Data Gathering
       </a>
@@ -302,7 +357,7 @@
   
     <li class="md-nav__item">
       <a href="../conc/" class="md-nav__link">
-        Conclusion
+        Discussion
       </a>
     </li>
   
@@ -322,6 +377,74 @@
                 
                 
                 <h1 id="data-dictionaries">Data Dictionaries</h1>
+<p>Data dictionaries should be created for each predictor and survey dataset. Dictionaries for the open-source data and Brazilian, Thai and Philippino survey data already exist and should be located in the data/meta/ folder. </p>
+<p>An exemplary data dictionary (for speedtest data) is shown below:</p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Name</th>
+<th>Description</th>
+<th>Type</th>
+<th>Binary</th>
+<th>Role</th>
+<th>Use</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>avg_d_kbps</code></td>
+<td>The average download speed of all tests performed in the tile, represented in kilobits per second</td>
+<td>num</td>
+<td>N</td>
+<td>predictor</td>
+<td>Y</td>
+<td>mbps can also be used</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>avg_u_kbps</code></td>
+<td>The average upload speed of all tests performed in the tile, represented in kilobits per second</td>
+<td>num</td>
+<td>N</td>
+<td>predictor</td>
+<td>Y</td>
+<td>mbps can also be used</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>avg_lat_ms</code></td>
+<td>The average latency of all tests performed in the tile, represented in milliseconds</td>
+<td>num</td>
+<td>N</td>
+<td>predictor</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>tests</code></td>
+<td>The number of tests taken in the tile</td>
+<td>num</td>
+<td>N</td>
+<td>predictor</td>
+<td>N</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>devices</code></td>
+<td>The number of unique devices contributing tests in the tile</td>
+<td>num</td>
+<td>N</td>
+<td>predictor</td>
+<td>N</td>
+<td></td>
+</tr>
+</tbody>
+</table>
                 
               
               
@@ -337,6 +460,41 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../configs/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Configurations" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Configurations
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../data_processing/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Processing Guide" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Data Processing Guide
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -83,7 +83,6 @@ model = xgb.XGBRegressor(random_state = 42)
 
 #Create custom scoring
 def custom_eval_metric(y_true, y_pred):
-    #errors_low_ytest = abs(y_pred[np.asarray(y_true).flatten()<0.3] - np.asarray(y_true[np.asarray(y_true).flatten()<0.3]).flatten())
     errors_low = abs(y_pred[y_pred<0.3] - np.asarray(y_true[y_pred<0.3]).flatten())
     return np.mean(errors_low)
 
