@@ -1,7 +1,9 @@
 # Exploratory Data Analysis
 
+As a disclaimer, some of this EDA is to explore our raw data and what it looks like. However, to run these notebooks, especially with using the satellite data and school points you will already need to run the Data Gathering and Feature Engineering Scripts first.
+
 ## Satellite Data
-The first thing we wanted to explore in our Exploratory Data Analysis was some maps of what our countries looked like and how our predictors might map onto our countries. We used Google Earth Engine to create some maps of nighttime imagery, the global human modification index and the vegetation index. For nighttime and vegetation index, we also wanted to show the change in time as we were using the rate of change as a predictor as well. Below you will find some static images of the maps we created. If you click on them, you can also find an interactive version. [Click here](scripts/Satellite_Data_EDA.ipynb) to see the Jupyter notebook with code included for replicating the maps below and [here for the html version](scripts/Satellite_Data_EDA.html). 
+The first thing we wanted to explore in our Exploratory Data Analysis was some maps of what our countries looked like and how our predictors might map onto our countries. We used Google Earth Engine to create some maps of nighttime imagery, the global human modification index and the vegetation index. For nighttime and vegetation index, we also wanted to show the change in time as we were using the rate of change as a predictor as well. Below you will find some static images of the maps we created. If you click on them, you can also find an interactive version. [Click here](scripts/Satellite_Data_EDA.ipynb) to see the Jupyter notebook with code included for replicating the maps below. 
 
 Satellite Images on a National Level for both Brazil and Thailand:
 
@@ -40,4 +42,4 @@ Here we see the difference in vegetation between Brazil and Thailand. [Click her
 ## Facebook Data
 
 ## Training Set EDA
-We also did some Exploratory Data Analysis once our training dataset was created. [Click Here](scripts/testing.html) for the full notebook of explanatory visualizations. [Click here](scripts/testing.ipynb) for the Jupyter Notebook .ipynb file. 
+We also did some Exploratory Data Analysis once our training dataset was created. You will not be able to run this on your own until you have run the Data Gathering and Feature Engineering scripts. [Click Here](scripts/testing.html) for the full notebook of explanatory visualizations. [Click here](scripts/testing.ipynb) for the Jupyter Notebook .ipynb file. 
