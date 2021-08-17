@@ -130,3 +130,7 @@ Here are the examinations of the shapely values for feature importances.
 
 @Jacob or Utku to put in pics
 
+-Shaply values overall
+-for very low and high error
+-individual shaply for one school
+-line/scatter feature importances from utku? 
