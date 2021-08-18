@@ -16,8 +16,6 @@ securityLevel: 'loose'
 
 # Data Gathering 
 
-Utku did a lot of work on this. Yay Utku!!
-
 ## Internal Data
 1. Surveys from ITU for Brazil and Thailand <br></br>
     The target variable for our modeling was the proportion of a population around a particular school that was connected to the internet. It therefore ranged from 0-1, with 0 being zero percent connected and 100 being 100% connected to the internet. We chose to measure this on a school level as one of our objectives, through working with UNICEF, was to detect schools that could be connected to the internet and further serve the community they are located. 
@@ -145,7 +143,7 @@ Our data pipeline includes three superclasses: Country, Opendata and  Feature En
 
 ### Map Offline Package Hierarchy:
 
-<dic class='mermaid'>
+<div class='mermaid'>
 classDiagram
     map_offline <|-- OpenData
     map_offline <|-- FeatureEngineering
