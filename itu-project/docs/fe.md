@@ -30,6 +30,8 @@ Our target variable is ground-truth survey data on local internet connectivity. 
 * `Brazil` - A4A
 * `Thailand` - H107
 
+In each case, we rename our target variable to simply 'target'.
+
 ## Joining Locations
 
 In the following description, we use the word 'feature' to mean predictor and, in some cases, ground truth survey variable. The map_feature method within the FeatureEngineering class is used to perform a spatial join between school locations and feature values. In essence, we are finding the correct value of each feature at each given school location. To do so, we first ensure that the dataframe corresponding to each predictor or survey dataset is loaded as a geodataframe, with an appropriately defined 'geometry' column. If the feature's geometry is a polygon, or multipolygon, rather than a point, we take the centroid as the location with which to match. If, instead, the feature's geometry is defined by latitude and longitude columns, rather than a single geometry column, this will be handled appropriately, so long as these column names are exactly 'latitude' and 'longitude', or 'lat' and 'lon'.
@@ -59,4 +61,6 @@ graph TD
   H --> |No| D;
 </div>
 
+## Classification Use Case
 
+Should you wish to train or apply a classifier, instead of a regression model, you can create a binary classification dataset by running the 'binning.py' script, found in the src/scripts/ folder. Within this script, it is straightforward to edit the name of a standard regression training dataset that you wish to convert into a classification-ready dataset. To train/apply a classification model, one would then simply need to change the dataset file name within the 'configs.yml' file.
