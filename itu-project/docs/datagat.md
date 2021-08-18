@@ -232,6 +232,20 @@ classDiagram
     }
 </div>
 
+### Data Gathering Pipeline
+
+We are still working on the data gathering pipeline workflow...
+
+1. OpencellData
+
+2. PopulationData
+
+3. SatelliteData
+
+4. FacebookData
+
+5. SpeedtestData
+
 ## Training Data Dictionary
 
 Show a table of each of the predictor in the training set and what their definitions are:
