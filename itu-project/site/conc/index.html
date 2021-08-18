@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#discussion" class="md-skip">
+        <a href="#outcome-interpretation" class="md-skip">
           Skip to content
         </a>
       
@@ -241,38 +241,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../configs/" class="md-nav__link">
-        Configurations
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_dictionaries/" class="md-nav__link">
-        Data Dictionaries
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_processing/" class="md-nav__link">
-        Data Processing Guide
+      <a href="../Meta_data/" class="md-nav__link">
+        Meta Data Information
       </a>
     </li>
   
@@ -375,28 +345,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#discussion" class="md-nav__link">
-    Discussion
-  </a>
-  
-    <nav class="md-nav" aria-label="Discussion">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#outcome-interpretation" class="md-nav__link">
     Outcome Interpretation
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#limitations" class="md-nav__link">
     Limitations
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#next-steps" class="md-nav__link">
     Next Steps
   </a>
@@ -412,8 +374,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extension-on-other-countries" class="md-nav__link">
-    Extension on other countries
+  <a href="#extension-to-other-countries" class="md-nav__link">
+    Extension to other countries
   </a>
   
 </li>
@@ -436,9 +398,11 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
   
 </li>
       
@@ -465,52 +429,51 @@
                 
                   <h1>Discussion</h1>
                 
-                <h2 id="discussion">Discussion</h2>
-<p>We have gained a variety of insights that can be used in future research and extension of the analyses. While our technical and methodological learnings have been outlined in the previous sections, the following conclusion will briefly provide an outcome interpretation of the project and then discuss limitations and possible next steps. </p>
+                <p>We have gained a variety of insights that can be used in future research and extension of the analyses. While our technical and methodological learnings have been outlined in the previous sections, the following conclusion will briefly provide an outcome interpretation of the project and then discuss limitations and possible next steps. </p>
 <h3 id="outcome-interpretation">Outcome Interpretation</h3>
-<p>We have developed a tool that is capable of providing multiple outcomes. First of all, after model application a prioritizing list of school within a country can be created. The priorization can be sorted by absolute number of offline population potentially served or by relative share of online population. In addition, it is possible to adapt the listing e.g. by excluding densely populated areas in order to get a list of schools in lowly populated areas, that would benefit most from internet connection. Moreover, the level of geographic aggregation of connectivity ratio can be modified up to federal state or full country level.
-Our provided scripts in combination with the documentation can now assist institutions like Giga Initiative to manage resource allocation for connecting schools. This can be done within a country, between multiple countries and potentially on province, region or city level. Aside from that we have created a straight-forward tool for feature data gathering and EDA. Creating simple map graphics or correlation plots might already indicate the presence of clear tendencies. </p>
+<p>We developed a tool that is capable of providing multiple outcomes. Firstly, once we've applied a model, we can create a list that prioritizes schools to be connected to the internet within a country. The priorization list created can be sorted either by the absolute number of offline population potentially served or by the relative share of online population. In addition, it is possible to adapt and change the list e.g. by excluding densely populated areas in order to get a list of schools just in lowly populated areas. The latter list prioritizes areas in more rural regions that would benefit from internet connectivity. Moreover, the level of geographic aggregation of the connectivity ratio can be modified up to federal state or full country level. It is currently at the enumeration area level.</p>
+<p>Our provided scripts in combination with the documentation can now assist institutions and interventions, like the Giga Initiative, to manage resource allocation for connecting schools. This can be done within a country, between multiple countries and potentially on province, region or city level. Aside from the prioritization list, we created a straight-forward tool for data gathering, feature engineering and exploratory data analysis. Using this tool, individuals can create simple map graphics or correlation plots, which might already indicate the presence of clear tendencies and areas likely to have internet without even delving into the modeling. </p>
 <h3 id="limitations">Limitations</h3>
-<p>During our project we have faced limitations especially in the area of model evaluation. The results make sense within our model and data, however it is yet to determine how this transfers to reality. Future extension and application of our models can help to further evaluate our project outcome. In the special case of Thailand another problem became obvious: The used data inherited multiple sources of error, therefore it was not possible to separate these from each other. In this specific case, for instance, we  could not find out to which degree the geographic aggregation of the target variable or the fact that we used OSM schools impacted model performance and error.</p>
-<p>In addition to the limitations we faced, there are more limitations that could possibly be present in our work as well as in future extensions. 
-As touched upon previously, we cannot evaluate yet how OSM school data performs compared to official school location data. If this datasource is supposed to be a cost and resource efficient replacement for UNICEF school data, its representativity should be reviewed. Furthermore, Facebook data could inherit an "instability" of how to interpret the feature. If popularity of Facebook differs over time, between countries or according to demographic indicators utilization does not remain straight forward. When examining feature importances and impacts, larger number of Facebook users have generally led to higher predictions of online population. However, if a big internationalized metropolitan area (e.g. Buenos Aires) shows a low percentage of Facebook users, this could much rather be due to the fact that another social media platform (such as Instagram) has overtaken the popularity. An analysis of dispersion of Facebook users among social strata could prevent a misinterpretation of data.</p>
-<p>Another potential source of bias could be the fact, that in our approach survey data is used as ground truth. Survey data are typically prone for biasing mechanisms like misreport or systematic non-response. Survey respondents have previously stated that they are not using the internet but in the same survey declared themselves as internet users. Non-response could be problematic if offline people tend to respond to the survey less likely. A potential corroborrating measure here could be comparing the distribution of demographic data within the survey (e.g income, gender) with other open (official) data sources. </p>
-<p>Ultimately, if the analyses will be extended to more countries the availability of microdata could bias the selection of countries that will be targeted. One could assume, that countries where no microdata on telecommunications exists could as well be countries with low connectivity. Further research should attempt to not disregard low connected countries systematically and potentially aim for a full open source data approach.</p>
+<p>During our project, we faced a number of limitations, especially with regard to model evaluation. The results make sense within our Brazil model and data, however we have yet to determine how this transfers to the reality of schools and their connectedness. Future extension and application of our models to other countries can help to further evaluate our project outcome. In the special case of Thailand, another problem became obvious: the data provided inherited multiple sources of error and it was not possible to separate these from each other. In this specific case, for instance, the geographic aggregation of the target variable made the model prediction accuracies hard to evaluate. Additionally, it was unclear how much the usage of school points from OSM, instead of school points provided by the local government, had an impact on model performance and error.</p>
+<p>Because we cannot yet evaluate how OSM school data performs compared to official school location data, its representation should be reviewed once official school points are obtained. If this datasource is supposed to be a cost and resource efficient replacement for UNICEF school data, the accuracy relative to official points is an important next step in evaluating the model. Another limitation of our data sources concerns the Facebook data we extract. There is an element of "instability" within the intrepretation of this data as the popularity of Facebook differs over time and between countries. According to demographic indicators, the utilization of it does not remain straight-forward. When we examined the feature importances and impacts, we saw that larger number of Facebook users have generally led to higher predictions of online population. However, if a large metropolitan area, like Sao Paulo, shows a low percentage of Facebook users, this could be due to the fact that another social media platform (such as Instagram) is more popular. As a next step, we would recommend an analysis of dispersion of Facebook users among social strata to prevent a misinterpretation of the data and this specific feature.</p>
+<p>Another potential source of bias is within our ground truth data itself, which is the survey data provided by the countries' national governemnts. Survey data is typically prone to biasing mechanisms like misreporting or systematic non-response. In the example of misreporting, in some of these surveys, respondents stated that they are not using the internet, but later in the same survey declared themselves internet users. Non-response could be problematic if there is selection bias present within who responds to the survey. Potentially, people who are not connected to the internet are less likely to complete the survey (especially if its a survey conducted over the internet). A potential corroborrating measure here would be comparing the distribution of demographic data within the survey (e.g income, gender) with other open (official) data sources. </p>
+<p>A major source of concern for us is the selection bias and feedback loop that will take place if the focus of modeling is entirely on countries for which survey data on internet connected populations already exist. One might assume that countries with no microdata on telecommunications are also countries with low connectivity. Further research should place emphasis on taking a systemic approach to creating models and identifying countries with less connected populations, so that they are not missed entirely.  Our open source data collection is just the beginning to an approach that will not have to rely on user-informed surveys.</p>
 <h3 id="next-steps">Next Steps</h3>
 <h4 id="additional-methods">Additional Methods</h4>
 <p>Multiple additional methods could be applied to our existing models and analyses: </p>
 <ol>
 <li>
-<p>Full scoring on Brazil
-Given our existing champion model, all schools outside the featured enumeration areas can now be scored with an estimated level of connectivtiy. This could be done for a sample of schools as a sanity check or for entire Brazil, which would yield a similar map like the Giga Initiative connectivtiy map. </p>
+<p>Full scoring on Brazil <br></br>
+As a reminder, we were only able to serve and evaluate predictions for the small scale of schools that fit within the enumeration areas of survey data we had. Moving forward, all schools outside the featured enumeration areas can now be scored with an estimated level of connectivity using our champion model. This would yield a similar map to the pre-existing Giga Initiative connectivity map. A comparison between both maps would be a sanity check on our predictions and perhaps yield additional insights into schools that need further assistance in internet connection.</p>
 </li>
 <li>
-<p>Statistical robustness checks
-Especially two steps could be reasonable additions that take the geographic nature of the data into account: Estimating a Geographically Weighted Regression (GWR) and performing spatial cross-validation on the models.</p>
+<p>Statistical robustness checks<br></br>
+There are two steps that would help in the quality of our model. One would be to create a geographically weighted regression that would take the school point locations into account. The second would be performing spatial cross validation on the models to ensure that we are accounting for all the spatial information and clustering within the school points themselves. This might also strengthen future predictions. </p>
 </li>
 <li>
-<p>Experiment with featured data
-The manner in which we used some of the features could be varied. First of all, it could be fruitful to experiment with Facebook data.  It might occur, that Facebook data already suffices as a standalone proxy variable for online population. Hypothetically this would decrease the need for model estimation and enable a global extension of the project. Furthermore, pulling OSM school locations for Brazil and applying the model to this sample could yield insights on the representativity of OSM data. Lastly, buffer zones around schools are currently constant in diameter, but could be varied according to specific variables (e.g. population data).  </p>
+<p>Experiment with featured data<br></br>
+The manner in which we used some of the features could be varied. Firstly, one could experiment more with the Facebook data.  Perhaps, the Facebook data already suffices as a standalone proxy variable for online population. Hypothetically, this would decrease the need for model estimation and enable a global extension of the project through only using the Facebook API. Furthermore, pulling OSM school locations for Brazil and applying the model to this sample could yield insights on the representativity of OSM data (as a reminder, the school points we used for Brazil came from the government and not from OSM). Lastly, buffer zones around schools are currently constant in diameter, in future iterations of this project, one could vary the diameter not by distance, but rather by a specific variable like population residing within each area. This might ensure more normalization with knowing the actual amount of people each school serves, as one could assume that the catchment areas for schools in rural areas is much larger than in urban areas. </p>
 </li>
 </ol>
-<h4 id="extension-on-other-countries">Extension on other countries</h4>
-<p>The existing model can be applied to every country, with OSM school location data available. However,model evaluation or model training for other countries requires two more components: Microdata (on household, individual or enumeration area level) and the respective shapefiles/geolocation of the enumeration area. Our analyses have indicated, that analyzing larger geographical aggregates like provinces diminishes model performance and interpretability. An enumeration area is assumed to be a largely homogeneous area, whereas the variation of connectivtiy within e.g. a federal state should be much higher. </p>
+<h4 id="extension-to-other-countries">Extension to other countries</h4>
+<p>The existing model can be applied to any country that has OSM school location data available. However, model evaluation or model training for other countries requires two more components: microdata (on household, individual or enumeration area level) and the respective shapefiles/geolocation of the enumeration areas. Our analyses have indicated that analyzing larger geographical areas like provinces diminishes model performance and interpretability. An enumeration area is small enough to assume it is largely a homogeneous area. By contrast, there is much more variation in connectivity rates within a federal state. </p>
 <h4 id="further-model-training">Further model training</h4>
-<p>With more countries being included to the connectivity analysis, more options of model combinations open up. Given the requirements are met, an individual model can be trained for each country and evaluated separately. In addition, joint models with multiple countries could result in a high predictive power on a global level and increase model robustness. Comparing the performances of combined and single-country models can give insights on the impact of country specific differences. Furthermore, it might be a reasonable idea to train regional models (e.g. a model for South East Asian countries). Actors that are not able to provide enumeration area level microdata (e.g. due to anonymity restrictions) can obtain our provided scripts and additional content and run a custom model training. </p>
+<p>As we train more models on different countries, there are more options of model combinations and opportunity to create greater generalizability of our model. Given the requirements stated above are met, an individual model can be trained for each country and evaluated separately. Additionally, we could combine multiple individual country models together to create a model with a higher predictive power on a global level, with increased model robustness. Comparing the performances of combined and single-country models might give insights into the impact of country-specific differences (i.e. national economic, or political differences). Furthermore, one could train regional models (e.g. a model for South East Asian countries and a separate one for South American countries). It is our hope that individuals and organizations that are not able to provide enumeration area level microdata (e.g. due to anonymity restrictions) can use our provided scripts and additional content to run their own custom model training. </p>
 <h4 id="additional-data-sources">Additional data sources</h4>
 <ol>
 <li>Country-level data</li>
 </ol>
-<p>When extending the models on multiple countries, it might make sense to include country level variables. Possbile additions could be urbanization rate, GDP, public spendings on telecommunications or other indices of human/infrastructural development. In doing so, "country-specific intercepts" are featured in the estimation and will assist accounting for differences in overall connectivtiy between countries. </p>
+<p>The extension of model training to multiple countries provides an opportunity to include national level variables. Possible variables that could be helpful are urbanization rate, GDP, public spendings on telecommunications or other indices of human/infrastructure development on a national level. In doing so, "country-specific predictors" are part of the modeling and might assist in accounting for differences in overall connectivity between countries. Additionally, it is important to pay attention to the rate and speed of change around predictors within our model. While two countries might have the same average radiance or GDP today, the speed with which the country is changing and the government is investing in allocating resources towards development is indicative of the overall internet connectivity estimate now and in the future. A great example of national internet statistics and their dependencies on differnet national indicators is provided by the Economist Intelligence Unit's <a href="https://theinclusiveinternet.eiu.com">Inclusive Internet Index</a>.</p>
 <ol>
 <li>Additional content from survey/school data</li>
 </ol>
-<p>The original models we provide have so far only been utilizing the necessarily required features of survey and school data. Too keep our approach as reproducible as possible for many countries we have so far asbtained from using additional information within these data sources. However, usually the survey will contain more connectivity-related variables and items such as more survey questions on telecommunications (e.g reasons for (non-)connectivity), demographic information such as age or gender or information on household size or income. Similarly information in school location data such as pupil count or computer availability could potentially be used in further analyses, e.g. when trying to estimate the feasability of connection for a specific school. </p>
+<p>The original models we provided only utilize the necessarily required features of survey and school data, the survey response of if a respondent is connected to the internet and school location points. We chose this approach, and left out all other variables and information present within these data sources, in order to keep our approach as reproducible as possible for other countries, because we knew that the survey questions would vary from country-to-country. For future analysis, we recommend further investigation of connectivity-related variables and questions on telecommunications (e.g reasons for (non-)connectivity), demographic information such as age or gender, and information on household size or income. Similarly, information in school location data, such as pupil count or computer availability, could potentially be used in further analyses, e.g. when trying to estimate the feasability of connection for a specific school. </p>
 <ol>
 <li>Further data </li>
 </ol>
-<p>Existing models could supposedly be improved by adding more features to the training data. Possible additions could stem from official data provided by ministries/regulators, platform/network/monitoring services like Google, Facebook or Cisco Analytics or (coverage) telecommunication data from telecommunication companies and operators. Nevertheless, at minimum a hypothetical logical connection between feature and target variable should always be existent. </p>
-<p>Our project goal was to improve understanding of predicting the world's offline population which we have examined in three case studies in Brazil, Thailand and the Philippines. In doing so we have created tools, that can be used by researchers and institutions to investigate in the connectivity within a country and do national and regional comparisons. This documentation is supposed to be a guidance for reproduction and extension of the project outcome. </p>
+<p>Existing models could supposedly be improved by adding more features to the training data. Possible additions could stem from official data provided by ministries/regulators, platform/network/monitoring services like Google, Facebook or Cisco Analytics, or (coverage) telecommunication data from telecommunication companies and operators. Although, at minimum, a hypothetical logical connection between feature and target variable should always exist. </p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Our project goal was to improve approaches to predicting the world's offline population, which we have examined in three case studies: Brazil, Thailand and the Philippines. In doing so we have created tools that can be used by researchers and institutions to investigate the connectivity within a country and for further national and regional comparisons. Hopefully, this documentation has served as guidance for reproduction and offered useful prompts for further analysis and research. </p>
                 
               
               

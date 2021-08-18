@@ -2,7 +2,6 @@
 import yaml
 import pandas as pd
 import numpy as np
-
 from mlflow.sklearn import log_model
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split, KFold, RandomizedSearchCV, GridSearchCV
@@ -58,10 +57,9 @@ parameters = {"n_estimators": model_config['parameter']['Random_Forest']['n_esti
 # define model class to use
 model = RandomForestRegressor(random_state = 42)
 
-#Create custom scoring
 def custom_eval_metric(y_true, y_pred):
     #errors_low_ytest = abs(y_pred[np.asarray(y_true).flatten()<0.3] - np.asarray(y_true[np.asarray(y_true).flatten()<0.3]).flatten())
-    errors_low = abs(y_pred[y_pred<0.3] - np.asarray(y_true[y_pred<0.3]).flatten())
+    errors_low=abs(y_pred[y_pred<model_config['parameter']['threshold']] - np.asarray(y_true[y_pred<model_config['parameter']['threshold']]).flatten())
     return np.mean(errors_low)
 
 custom_scorer = make_scorer(custom_eval_metric, greater_is_better = False)
@@ -112,11 +110,12 @@ pred = model.predict(X_test)
 errors = abs(pred - y_test.iloc[:,0].to_numpy())
 avg_error = np.mean(errors)
 
-#Focusing on the predictions that are below .3
-errors_low_pred = abs(pred[pred < 0.3] - np.asarray(y_test[pred < 0.3]).flatten())
+#Low tail error
+errors_low = abs(pred[pred<model_config['parameter']['threshold']] - np.asarray(y_test[pred<model_config['parameter']['threshold']]).flatten())
 
-#Focusing on the ground truth that is below .3
-errors_low_truth = abs(pred[np.asarray(y_test).flatten() < 0.3] - np.asarray(y_test[np.asarray(y_test).flatten() < 0.3]).flatten())
+#Low tail error
+errors_low_ytest = abs(pred[np.asarray(y_test).flatten()<model_config['parameter']['threshold']] - np.asarray(y_test[np.asarray(y_test).flatten()<model_config['parameter']['threshold']]).flatten())
+
 
 #avg error for pred below .3
 avg_error_low_pred = np.mean(errors_low_pred)
@@ -131,9 +130,9 @@ stan_dev_low_truth = np.std(errors_low_truth)
 print("#####################################################")
 print('avg error: ', round(avg_error, 2))
 print('Just the lower errors: ', np.round(errors_low_pred,2 ))
-print('Schools pred below .3:' , len(pred[pred<.3]))
+print('Schools pred below .3:' , len(pred[pred<model_config['parameter']['threshold']]))
 print('Mean lower pred error: ', round(avg_error_low_pred, 2))
-print('GT School below .3:' , len(y_test[y_test['A4A_right']<0.3]))
+print('GT School below .3:' , len(y_test[y_test['target']<model_config['parameter']['threshold']]))
 print('Mean lower ground truth error: ', round(avg_error_low_truth, 2))
 print('Standard Dev of Low Error: ', round(stan_dev_low_pred, 2))
 print("#####################################################")
