@@ -1,25 +1,41 @@
 # Folder Structure
 
-- files/
-  - src/
-    - scripts/
-      - configs.py
-      - main.py
-      - data_pipeline.py
+- conf/
+- data/
+  - geodata/
+  - meta/
+  - school_loc/
+  - fb/
+  - opencellid/
+  - satellite/
+  - speedtest/
+  - survey/
+    - Brazil/
+    - Thailand/
+    - Philippines/
+  - training_sets/
+    - Brazil/
+    - Thailand/
+    - Philippines/
+  - worldpop/
+- model/
+- notebooks/
+- src/
+  - scripts/
+    - map_offline
+      - data_gathering
+        - __init__.py
+        - opendata.py
+        - opendata_utils.py
+        - opendata_scrap.py
+        - opendata_facebook.py
+        - opendata_satellite.py
+      - feature_engineering
+        - __init__.py
+        - data_pipeline.py
+        - configs.py
       - country.py
-      - opendata.py
-      - school.py
       - survey.py
-      - opendata_facebook.py
-      - opendata_scrap.py
-  - data/
-    - geodata/
-    - school_loc/
-    - enumeration_area/
-    - fb/
-    - opencellid/
-    - satellite/
-    - speedtest/
-    - survey/
-    - training_sets/
-    - worldpop/
+      - school.py
+      - main.py
+- requirements.txt
