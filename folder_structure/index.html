@@ -241,38 +241,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../configs/" class="md-nav__link">
-        Configurations
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_dictionaries/" class="md-nav__link">
-        Data Dictionaries
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_processing/" class="md-nav__link">
-        Data Processing Guide
+      <a href="../Meta_data/" class="md-nav__link">
+        Meta Data Information
       </a>
     </li>
   
@@ -368,33 +338,55 @@
                 
                 <h1 id="folder-structure">Folder Structure</h1>
 <ul>
-<li>files/</li>
-<li>src/<ul>
-<li>scripts/</li>
-<li>configs.py</li>
-<li>main.py</li>
-<li>data_pipeline.py</li>
-<li>country.py</li>
-<li>opendata.py</li>
-<li>school.py</li>
-<li>survey.py</li>
-<li>opendata_facebook.py</li>
-<li>opendata_scrap.py</li>
-</ul>
-</li>
-<li>data/<ul>
+<li>conf/</li>
+<li>data/</li>
 <li>geodata/</li>
+<li>meta/</li>
 <li>school_loc/</li>
-<li>enumeration_area/</li>
 <li>fb/</li>
 <li>opencellid/</li>
 <li>satellite/</li>
 <li>speedtest/</li>
-<li>survey/</li>
-<li>training_sets/</li>
-<li>worldpop/</li>
+<li>survey/<ul>
+<li>Brazil/</li>
+<li>Thailand/</li>
+<li>Philippines/</li>
 </ul>
 </li>
+<li>training_sets/<ul>
+<li>Brazil/</li>
+<li>Thailand/</li>
+<li>Philippines/</li>
+</ul>
+</li>
+<li>worldpop/</li>
+<li>model/</li>
+<li>notebooks/</li>
+<li>src/</li>
+<li>scripts/<ul>
+<li>map_offline</li>
+<li>data_gathering<ul>
+<li><strong>init</strong>.py</li>
+<li>opendata.py</li>
+<li>opendata_utils.py</li>
+<li>opendata_scrap.py</li>
+<li>opendata_facebook.py</li>
+<li>opendata_satellite.py</li>
+</ul>
+</li>
+<li>feature_engineering<ul>
+<li><strong>init</strong>.py</li>
+<li>data_pipeline.py</li>
+<li>configs.py</li>
+</ul>
+</li>
+<li>country.py</li>
+<li>survey.py</li>
+<li>school.py</li>
+<li>main.py</li>
+</ul>
+</li>
+<li>requirements.txt</li>
 </ul>
                 
               

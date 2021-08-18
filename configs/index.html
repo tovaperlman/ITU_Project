@@ -239,50 +239,10 @@
 
   
   
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Configurations
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
   
     <li class="md-nav__item">
-      <a href="../data_dictionaries/" class="md-nav__link">
-        Data Dictionaries
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_processing/" class="md-nav__link">
-        Data Processing Guide
+      <a href="../Meta_data/" class="md-nav__link">
+        Meta Data Information
       </a>
     </li>
   
@@ -379,10 +339,29 @@
                 <h1 id="configurations">Configurations</h1>
 <p>We use configs.py to store the variable configurations that should be changed according to use-case:</p>
 <ul>
-<li><code>WD</code> - Working Directory, e.g. '../../../files/'</li>
+<li><code>WD</code> - Working Directory, e.g. 'C:/Users/itu/DSSGx/'</li>
+<li><code>COUNTRY</code> - Country name for current use-case, e.g. 'Thailand'</li>
+<li><code>COUNTRY_CODE</code> - Country code for current use-case, e.g. 'tha'</li>
 <li><code>AVAILABLE_COUNTRIES</code> - Countries for which survey data with an internet connectivity ground truth variable is available, e.g. list('bra', 'tha')</li>
-<li><code>COUNTRY</code> - Country code for current use-case, e.g. 'tha'</li>
 <li><code>FEATURES</code> - List of predictive features for use-case, e.g. list('speedtest', 'opencell', 'facebook', 'population', 'satellite'). This exemplary list contains each of the five open data sources we have used and they must be sytactically entered as shown.</li>
+<li><code>SURVEY_AREAS</code> - Survey dataset geometry join type, 'tiles' if survey will be joined to country administrative region, province, etc., 'enumeration'  if survey will be joined to enumeration area geometries</li>
+<li><code>SATELLITE_COLLECTIONS</code> - Dictionary that has satellite image collection identifier as a key and image collection band names for multi-band images, e.g. '{'MODIS/006/MOD13A2': ['NDVI']}'</li>
+<li><code>SATELITTE_START_YEAR</code> - Start year of satellite imagery collection to be used</li>
+<li><code>SATELITTE_END_YEAR</code> - End year of satellite imagery collection to be used</li>
+<li><code>SATELITTE_BUFFER</code> - Buffer to define school area for which satellite imagery will be collected, in kilometers</li>
+<li><code>SATELITTE_MAX_CALL_SIZE</code> - Google Earth Engine API max feature collection length, by default 5000 points</li>
+<li><code>GOOGLE_SERVICES_ACCOUNT</code> - Google Services Account to call Google Earth Engine API</li>
+<li><code>GOOGLE_EARTH_ENGINE_API_JSON_KEY</code> - JSON key file name that is located under satellite folder</li>
+<li><code>OPENCELLID_ACCESS_TOKEN</code> - OpenCelliD Project API access token as string</li>
+<li><code>FACEBOOK_MARKETING_API_ACCESS_TOKEN</code> - Facebook Marketing API access token as string</li>
+<li><code>FACEBOOK_AD_ACCOUNT_ID</code> - Facebook Ad account id as string</li>
+<li><code>FACEBOOK_CALL_LIMIT</code> -  Facebook Ads Management API maximum calls within one hour, by default it is 300 + 40 * (Number of Active Ads)</li>
+<li><code>FACEBOOK_RADIUS</code> - Radius to define school area for which Facebook API data will be collected, in kilometers</li>
+<li><code>FACEBOOK_SCHOOL_DATA_LEN</code> - # of schools in the dataset to keep facebook data with school length in the name in case schools wanted to be divided into chunks and also approximate Facebook API completion time</li>
+<li><code>SPEEDTEST_TILE_TYPE</code> - Service type for Ookla Open Speedtest Dataset can be 'fixed' or 'mobile' representing fixed or mobile network performance aggregates of tiles</li>
+<li><code>SPEEDTEST_TILE_YEAR</code> - Speedtest data year, e.g. 2021</li>
+<li><code>SPEEDTEST_TILE_QUARTER</code> - Speedtest data quarter, e.g. 2</li>
+<li><code>POPULATION_DATASET_YEAR</code> - Population counts dataset year</li>
 </ul>
                 
               
@@ -399,41 +378,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../eda/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Exploratory Data Analysis" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Exploratory Data Analysis
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../data_dictionaries/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Dictionaries" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Data Dictionaries
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

@@ -55,8 +55,8 @@ print("training data loaded")
 print("#####################################################")
 
 # define predictors and target
-pred   = ['avg_d_kbps', 'mean_GHM', 'avg_rad_mean', 'viirs_yr', 'ghsl_mean', '19_cf_cvg_mean', 'estimate_dau', 'population']
-target = ['A4A_right']
+pred   = model_config['meta']['predictors']
+target = model_config['meta']['target']
 
 X = dataset[pred]
 y = dataset[target]
@@ -80,7 +80,8 @@ print("#####################################################")
 inner_cv = KFold(n_splits = model_config['parameter']['inner_cv'], shuffle=True)
 
 # define parameter grid
-parameters = {'C': [1, 10, 100], 'gamma': [0.001, 0.0001], 'kernel': ['rbf']}
+parameters = {'C': model_config['parameter']['svm']['C'], 'gamma': model_config['parameter']['svm']['gamma'],
+'kernel': model_config['parameter']['svm']['kernel']}
 
 # define model class to use
 model = SVR()

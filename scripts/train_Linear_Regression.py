@@ -75,8 +75,14 @@ print("Lifecycle_stage: {}".format(experiment.lifecycle_stage))
 dataset = model_config['model']['loc'] + model_config['model']['file']
 dataset= pd.read_csv(dataset)
 print(dataset.shape)
-X = dataset[['avg_d_kbps','mean_GHM', 'avg_rad_mean']]
-y = dataset['A4A_right']
+
+# define predictors and target
+pred   = model_config['meta']['predictors']
+target = model_config['meta']['target']
+
+X = dataset[pred]
+y = dataset[target]
+
 print('X Shape:', X.shape)
 print('y Shape:', y.shape)
 

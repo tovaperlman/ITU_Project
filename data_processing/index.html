@@ -16,7 +16,7 @@
     
     
       
-        <title>Data Processing Guide - ITU Project</title>
+        <title>Instructions to Create Model-Ready Dataset - ITU Project</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Processing Guide
+              Instructions to Create Model-Ready Dataset
             
           </span>
         </div>
@@ -241,49 +241,9 @@
   
   
     <li class="md-nav__item">
-      <a href="../configs/" class="md-nav__link">
-        Configurations
+      <a href="../Meta_data/" class="md-nav__link">
+        Meta Data Information
       </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../data_dictionaries/" class="md-nav__link">
-        Data Dictionaries
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Data Processing Guide
-      </a>
-      
     </li>
   
 
@@ -379,7 +339,13 @@
                 <h1 id="instructions-to-create-model-ready-dataset">Instructions to Create Model-Ready Dataset</h1>
 <ol>
 <li>
-<p>To generate a dataframe comprising any target variables and predictors that you wish to use, first set up the use-case configurations in configs.py. Details of the configurable variables and their expected assignments can be found in the 'configurations' section of the documentation.</p>
+<p>Create an environment from the requirements.txt file: 'pip install -r path/to/requirements.txt'. These package dependencies are only supported on Windows and Linux.</p>
+</li>
+<li>
+<p>Navigate to src/scripts/map_offline/.</p>
+</li>
+<li>
+<p>To generate a dataframe comprising any target variables and predictors that you wish to use, first set up the use case configurations in feature_engineering/configs.py. Details of the configurable variables and their expected assignments can be found in the 'configurations' section of the documentation.</p>
 </li>
 <li>
 <p>Having correctly set the desired configurations, all you need to do is run 'main.py'. Following this, a dataset for model training and/or application will be saved within a training_sets folder, which is situated within the data directory.</p>
@@ -400,41 +366,6 @@
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../data_dictionaries/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Dictionaries" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Data Dictionaries
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../datagat/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Gathering" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Data Gathering
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

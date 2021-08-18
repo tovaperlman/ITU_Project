@@ -1,19 +1,26 @@
 model:
-    loc: '../../../files/data/training_sets/'
-    file: 'training_set_v1_6.csv'
-    #file: "thailand_dataset_v1_1.csv"
+    loc: '/files/data/training_sets/'
+    file: 'Brazil/training_set_v001.csv'
+    file: "thailand_dataset_v1_2.csv"
 meta:
-    experiment_name: "/Threshold changes/Brazil/v128"
-    run_name: "XGBoost with a . 5 threshold"
-    target: ['A4A_right']
+    experiment_name: "/Brazil/001"
+    run_name: "Example Run Name Here"
+    target: ['target']
     predictors: ['avg_d_kbps',
        'avg_u_kbps',
-       'mean_GHM', 'avg_rad_mean',  'cf_cvg_mean',  'viirs_slope_yr',
-       'cf_cvg_viirs_slope_yr', 'viirs_slope_month',
-       'viirs_slope_month_cf_cvg', 'estimate_mau', 'pop_norm']
+       'mean_ghm', 'mean_avg_rad', 'mean_cf_cvg',  'slope_year_avg_rad', 'slope_month_avg_rad', 'estimate_mau', 'slope_month_cf_cvg',
+        'mean_NDVI', 'slope_year_NDVI', 'population']
+    available_predictors: ['source_school_id', 'latitude', 'longitude', 'school_location',
+       'geometry', 'target', 'mean_ghm', 'mean_avg_rad', 'change_year_avg_rad',
+       'slope_year_avg_rad', 'change_month_avg_rad', 'slope_month_avg_rad',
+       'mean_cf_cvg', 'change_year_cf_cvg', 'slope_year_cf_cvg',
+       'change_month_cf_cvg', 'slope_month_cf_cvg', 'mean_NDVI',
+       'change_year_NDVI', 'slope_year_NDVI', 'change_month_NDVI',
+       'slope_month_NDVI', 'estimate_dau', 'estimate_mau', 'estimate_ready',
+       'range', 'avg_d_kbps', 'avg_u_kbps', 'population']
 parameter:
     test_size: .3
-    inner_cv: 10
+    inner_cv: 3
     iterations: 3
     threshold: .3
     Random_Forest:
