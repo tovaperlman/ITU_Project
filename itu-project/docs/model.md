@@ -128,18 +128,24 @@ As part of our winning models, we wanted to see which predictors had high featur
 
 Subsequently, we further investigated the effects of features on the prediction by examining the shapley values. The graphic below, shows the scattered effects that predictors had on one specific prediction for the champion XGBoost model. In addition, the graphic indicates how relatively high or low values of features impacted the overall prediction.
 
-GRAPHIC
+![XGBoost_Shap](Images/xgboost_shapely.png)
+
 
 While low impact features like average download and upload speed look normally distributed around zero, important features like Facebook can be interpreted more reasonable. For this model, low monthly Facebook users resulted in a (much) lower prediction of online population. Similarly, low values of average radiance yielded lower predictions. 
 
 In order to examine impact of the features more detailled, we looked at shapely values where the model performed particularly well and particularly poor (i.e. very low and high errors). 
+For errors larger than 0.4 most of the shapley valzes are scattered around 0, however from this graphic we can not make out a clear pattern why these predictions turned out to be particularly bad. 
 
-GRAFIK
+![XGBoost_Shap](Images/xgboost_shapely_lowerror.png)
+![XGBoost_Shap](Images/xgboost_shapely_higherror.png)
+
 
 We evaluated how the feature importance changes across the range of feature values by creating line and scatter plots indicating the value und respective importance. 
 
-GRAFIK 
+![XGBoost_Shap](Images/xgboost_shapely_scatterline.png)
+
 
 Ultimately, we spot-checked single school area predictions with observing how the collection of features influenced this particular prediction. 
 
-GRAPHIC
+![XGBoost_Shap](Images/xgboost_shapely_indiv.png)
+
