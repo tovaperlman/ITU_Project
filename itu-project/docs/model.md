@@ -1,13 +1,13 @@
 # Modeling Section:
 
-The model we need to train is a regression model as we are attempting to predict a number between 0 and 1 of internet connectivity. A result or prediction of 0 means that of the households surveyed (about 11), no households in the enumeration area stated that they had access to internet. A result or prediction of 1 means that every household surveyed in the enumeration area had access to internet. Most responses fell on a scale between 0 and 1, indicating that some but not all families had internet access. Later on, we attempted to turn this into a classification problem to check our work but it did not provide any higher accuracy. 
+The model we needed to train was a regression model that predicts the average share of households' internet connectivity in an enumeration area on a scale from 0 to 1. A  prediction of 0 means that of the households surveyed, no households in the enumeration area stated that they had access to internet, whereas a prediction of 1 means that every household surveyed in the enumeration area had access to internet. In the Brazilian surveydata the average responding households per enumeration area were around 11. Logically, most of the responses fell between 0 and 1, indicating that some but not all families had internet access. Later on, we experimented with transforming the approach into a classification problem, however it did not increase model accuracy.
 
 ## Training Set EDA
-We also did some Exploratory Data Analysis once our training dataset was created. [Click Here](scripts/testing.html) for the full notebook of explanatory visualizations. [Click here](scripts/testing.ipynb) for the Jupyter Notebook .ipynb file. 
+Once our training dataset was created, we performed some Exploratory Data Analysis . [Click Here](scripts/testing.html) for the full notebook of explanatory visualizations. [Click here](scripts/testing.ipynb) for the Jupyter Notebook .ipynb file. 
 
 ## Mlflow Set-up (Optional)
 
-In order to track our models, we set up autologging in mlflow. [Mlflow](https://www.mlflow.org/docs/latest/index.html) is an exciting and experimental way of logging models. We set up our model training so that our python script for each model would create a new experiment for each run, it would log each of our model parameters when we did hyperparameter tuning and then log the best parameter at the top. In this way we were able to compare the various parameters logged in each run to determine how to change the grid space of the hyperparameters. We also were then able to compare models to each other. Within mlflow, we also logged the predictors for each run and the requirements for packages and dependencies to run. Each run also logs the best model as an artifact, so one can easily take the model and apply it to new data. We are including both the best model logged, as well as each run, here in order to make this as reproducible as possible. Below you can see a screenshot of a mlflow which logs our best runs, with our best hyperparameters and using our custom metric for evaluation.  On the side, you can also see the list of other experiments we ran with different models. 
+In order to track our models, we set up autologging in mlflow. [Mlflow](https://www.mlflow.org/docs/latest/index.html) is an exciting tool for logging machine learning models, their respective KPIs and additional information. We set up our model training so that the python scripts create a new experiment for each run, that logs each of the model parameters when we did hyperparameter tuning and then log the best parameter at the top. In this way we were able to compare the various parameters logged in each run to determine how to change the grid space of the hyperparameters. We also were then able to compare the different models to each other. Additionaly, we logged the predictors, requirements for packages and dependencies for each run. Every run's winning model was logged as an artifact, so one can easily reload the model and apply it to other data. In order to make our following analyses as reproducible as possible, we are providing a couple of our winning models from different model classes. Below you can see a screenshot of mlflow which logs the best runs, with the best hyperparameters and a custom metric for evaluation.  On the side, you can also see the list of other experiments we ran with different model classes. 
     ![mlflow_setup](Images/mlflow_setup.PNG)
 
         ``` #### mlflow setup ####
@@ -23,26 +23,26 @@ In order to track our models, we set up autologging in mlflow. [Mlflow](https://
         mlflow_client = mlflow.tracking.MlflowClient()
         experiment_id = mlflow_client.get_experiment_by_name(experiment_name).experiment_id ```
 
-Here you can see the simplicity of reload the model artifact later on and applying on new data:
-    ![mlflow_pred](Images/mlflow_pred.PNG)
+Here you can see the simplicity of reloading the model artifact later on and applying it to new data:
+    ![mlflow_pred](Images/thailand_pickle_model.png)
 
 
 ## Model Configuration
-Once we have mlflow set up and our model_config.yaml file set up, we can run many different experiments using our .py scripts by changing a few things within our yaml file. [Click here](scripts/model_config.yaml) to see the full yaml file. Below you can also see how it was set up. We use this to steer our scripts and set our parameters. We set up the input data at the top which is our training data, then label the target and predictor variables as well as the name of the experiment and a brief description in run_name. Under the parameters section, we set parameters like test size (which is crucial), the amount of cross validation folds to do, the number of iterations and the threshold for our custom metric. The threshold tells the model which percent of schools with low internet connectivity to focus on. Then within parameters, there are different sections based on what type of model you might decide to run. Our .yaml file contains parameters for grid search within Random Forest, LightGBM and XGBoost. In our current scripts, we've commented out the mlflow logging for hyperparameter tuning because it takes a long time to log and towards the end we just wanted to log our best models. 
+Once we have mlflow and the respective model_config.yaml file set up, we can run many different experiments using our .py scripts by simply changing a some things within the configuration yaml file. [Click here](scripts/model_config.yaml) to see the full yaml file. Below you can also see how it was set up. We use this to steer our scripts and set our parameters. We set up the input data at the top which is the training data, then label the target and predictor variables as well as the name of the experiment and a brief description in run_name. Under the parameters section, we set parameters like test size (which is crucial), the amount of cross validation folds to do, the number of iterations and the threshold for our custom metric. The threshold tells the model which percent of schools with low internet connectivity to focus on. Then within parameters, there are different sections based on what type of model you might decide to run. Our .yaml file contains parameters for grid search within Random Forest, LightGBM and XGBoost. In our current scripts, we've commented out the mlflow logging for hyperparameter tuning. 
 
 ![model_config](Images/model_config_yaml.PNG)
 
 ## Model Training
 
-We tried out 7 different model classes and ran over 100 experiments each containing 20 or more runs that tried various parameters in order to determine which model had the best accuracy. We experimented with various parameters, as well as different combinations of predictors. Below is the final list of predictors we used and a heat map displaying their collinearity. As you can see, there is not high multi-collinearity among our predictors except with the mean global human modification and the mean average radiance. However, we felt both predictors were important and had high feature importance in the model so we decided to keep both in. 
+We tried out 7 different model classes and ran more than 100 experiments each containing 20 runs at minimum that tried various parameters in order to determine which model had the best accuracy. We experimented with  different combinations of parameters and predictors. Below is the final list of predictors we used and a heat map displaying their collinearity. As you can see, we do not find high multi-collinearity among our predictors except with the mean global human modification and the mean average radiance. However, both predictors showed high feature importances and were therefore kept in the model. 
     ![heatmap](Images/heatmap.PNG)
 
-In this figure, one can see the correlation between predictors and our target variable. Predictors like the global human modification and average radiance have strong correlation. 
+In this figure, one can see the correlation between predictors and our target variable. Predictors like the global human modification and average radiance showed the largest positive correlations. 
 
 ![corrtarget](Images/corr_target.PNG)
 
 
-Another way that we improved accuracy was by building a custom metric in order to score both our test set within our cross validation and our final holdout set. The metric calculates errors specifically by taking the prediction below .3 (or another threshold, we also experimented with .5) subtracting that from the ground truth below .3 (or another threshold), taking the absolute value and then returning the average of all those errors. Below please find a code snippet of our custom metric.
+Another way to improve accuracy was by building a custom metric in order to score both our test set within our cross validation and our final holdout set. The metric calculates errors specifically by taking all predictions below .3 (or another threshold, we also experimented with .5) subtracting that from the ground truth below .3 (or another threshold), taking the absolute value and then returning the average of all those errors. Below please find a code snippet of our custom metric.
 
         #Create custom scoring
             def custom_eval_metric(y_true, y_pred):
@@ -56,13 +56,13 @@ Another way that we improved accuracy was by building a custom metric in order t
                                     refit=True,
                                     verbose = 2)
 
- We built this as we understood that it was more important to have better accuracy on schools with lower internet connectivity than higher connectivity. Before insitituting the custom metric, our models were good with predicting the average values, but they did poorly at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). We dropped the zero's because our project partners informed us that they were most likely due to incomplete data and because they skewed our results. Because there were only 23 of them, we felt it did not impact the data class balancing. Secondly, we instituted our custom metric which trained the model to minimize the error score under the .3 level of prediction. 
+ We built the metric as we wanted to put the focus on having better accuracy on schools with lower internet connectivity. Before instituting the custom metric, our models performed well with predicting the medium values, but they had much larger errors at either end of the spectrum and particularly on the low values. In order to remedy this issue, we first dropped any rows that had an internet connectivity of zero (there were 23 of them). We dropped the zeros because they were most likely occuring due to incomplete data rather than enumeration areas truly having no households connected. Furthermore, as a value of 0 only occured for 23 observations, it did not severely impact the data class balancing. Secondly, we instituted our custom metric which trained the model to minimize the error score under the .3 level of prediction. 
 
- Within our scripts, we offer two ways of doing cross validation. One is by grid search which searches through every combination of the hyperparameter grid space to find the best combination. The other format is Randomized Grid Search which searches through a random combination and is steered by the number of iterations (or combinations to test out) given to it in the config file. As we have tested all the hyperparameters, the current grid space is much smaller than prior and we have chose to include gridsearch cv with randomized cv commented out in case one wants to add more parameters and tune themselves. 
+ Within our scripts, we offer two ways of doing cross validation. One is by grid search which searches through every combination of the hyperparameter grid space to find the best combination. The other format is Randomized Grid Search which searches through a random combination and is steered by the number of iterations (or combinations to test out) given to it in the config file. As we have tested all the hyperparameters, the current grid space is much smaller than prior and we have chosen to include gridsearch cv with randomized cv commented out in case further research wants to add more parameters and repeat the tuning. 
  
- The resulting champion out of over 2000 models was XGBoost with an average error of .06 and specifically for under the .3 threshold, had an average error of .05. This means that for schools that are predicted to be below 30%, we can trust the model's predictions, as on average the predictions are only off by 5 percentage points from the ground truth value. 
+ The resulting champion out of over 2000 models was an XGBoost model with an average error of .06. Specifically for under the .3 threshold, the model had an average error of .05. This means that the overall and low-threshold accuracy appears to be on an adequate level, as on average the predictions are off by just 5 percentage points from the ground truth value. 
 
- Below, you can see the list of all the model classes we tried. Feel free to try out running these models yourselves or reading the code by clicking on the hyper linked script. There is further documentation within each script on how it runs, and how it works with mlflow logging.
+ Below, you can see the list of all model classes we tried. Feel free to try out running these models yourselves or reading the code by clicking on the hyperlinked script. There is further documentation within each script on how it runs, and how it works with mlflow logging.
 
 1. Linear Regression
     - [Python script with Mlflow](scripts/train_Linear_Regression.py)
@@ -91,46 +91,55 @@ Another way that we improved accuracy was by building a custom metric in order t
 
 ## Model Evaluation and Results 
 
-Below we see a comparison of all the models. It is clear that Random Forest and XGBoost both have the lowest average error among all the models, therefore they are the winners. 
+Below we see a comparison of the average low connectivity errors of all models. Clearly the Random Forest and XG Boost model were most accurate in predicting the low connectivity school areas.
 [Click on this link](scripts/Model_Comparisons_keep.ipynb) to see a notebook with the model comparisons. [Click here](scripts/Model_Comparisons_keep.html) for the HTML version. 
 ![model_graph](Images/model_graph.PNG)
 
-As you can see from the above graph, our winning model was the XGboost model which produced an error of .06 and a low average error of .05 with the hyper parameters of: eta: .2, max_depth: 9, n_estimators: 550. 
+The winning XGboost model produced an error of .06 and a low average error of .05 with the hyper parameters of: eta: .2, max_depth: 9 and n_estimators: 550. 
 
 Click on this link for the notebook with the [Random Forest Predictions](scripts/Thailand Predictions_ XGBoost_Model.html) and click on this link for the notebook with the [XGBoost Predictions](scripts/Thailand Predictions_ XGBoost_Model.html).
 
-Here is a map of our predictions for schools within Brazil. Figure 1 displays the location for all the schools were the ground truth is less than 30% connected to the internet. There are 69 schools in Brazil that have less than 30% internet connectivity. Figure 2 shows the errors in schools where the prediction is less than 30% connected to the internet. While we can see that there are fewer schools that are predicted than that exist, we can trust that our predictions are correct, as the error score is low. This map was made using the Random Forest model which predicts 14 schools. The XGBoost model predicts 29 schools below 30%. Additionally, our predicted schools match up with our ground truth schools. In Figure 3, we see the predictions for all the schools in the test set mapped out. This gives us an understanding of where the higher and lower connected schools are located regionally. It appears that the higher connected schools are on the coast (the yellows and light greens) while the lower connected schools are located more inland. In Figure 4, we see the errors mapped out for the schools in the test set. As we can see most schools have a low error score, which means we can mostly trust the predictions. The schools with higher error scores are also the schools that have less connectivity, which provides even more motivation to use our custom metric as we want to focus on having a lower error score for schools that are less connected. Thus the 14 schools depicted in Figure 2 are the ones that one could prioritize to connect. 
+Here is a map of our predictions for schools within Brazil. Figure 1 displays the location for all the schools where the ground truth is less than 30% connected to the internet. There are 69 schools in Brazil that have less than 30% internet connectivity. Figure 2 shows schools where our Random Forest model prediction was actually less than 30% connected to the internet. While we can see that not all schools below 30% were predicted correctly below the threshold, the low error score indicates, that if the model succeeds below-threshold prediction it performs well. While the Random Forest model predicted 14 schools under 30%, the XGBoost predicted 29. 
 
+Figure 3 shows the predictions for all schools in the test set mapped out. This gives us an understanding of where the higher and lower connected school areas are located regionally. It appears that the higher connected schools areas are on the coast (the yellows and light greens) while the lower connected schools are located more inland. In Figure 4, we see the errors mapped out for the schools in the test set. For most schools the error scores appear to be on a low level, however large error predictions should be furtherly examined, especially if they occur systematically at schools with low average connectivity.
 ![Brazil_Map_predictions](Images/Brazil_map_pred.PNG)
 
-We also see that our predictions closely mirror the ground truth within the country, as well as an external data source titled Digital 2021: Brazil. Thus we can trust that our model performs well on Brazilian school data. 
-![Brazil_Table](Images/Brazil_table.PNG)
-
-This graph compares predictions to reality. We can see that the points are quite close to the line except within the lower range. 
+This graph compares predictions to reality in a scatter plot. We can see that the points are mostly close to the line except within the lower range of connectivity. 
 ![Comp_pred_real](Images/RF_Comparisons.PNG)
 
-Then we see the residuals compared to reality. This is promising as most residuals hug tightly to the line except for the ones at the very low and high end.
+Then we examine the residuals compared to reality. Most residuals hug tightly to the line except for some observations at the very low and high end.
 
 ![Residuals_reality](Images/RF_Comp_Residuals.PNG)
 
-Lastly, we also see the comparison of distributions between reality and predictions. While the predictions are a bit higher, the overall curves generally follow each other.
+Lastly, we also see the comparison of distributions between reality and predictions. While the predictions curve is significantly steeper, the overall curves generally follow each other and have a similar center.
 
 ![distributions](Images/reality_pred_comp.PNG)
 
 
 
 ## Model Interpretation
-As part of our winning models, we wanted to see which predictors had high feature importance within the model. Below, is the graph for both Random Forest and XGBoost feature importances. As one can see, the highest feature importances are the nighttime average radiance predictor and the Facebook monthly active users.
+As part of our winning models, we wanted to see which predictors had high feature importances within the model. Below, is the graph for both the winning Random Forest and XGBoost model feature importances. For both models the average radiance seems to have a significant predicting role, however the importances of other features differ largely between RF and XGBoost. While average download speed has a large feature importance value for XGBoost, it was one of the least important features in the RF model. Moreover, Vegetation Index and Facebook users showed to be key features in the RF model but only played a marginal role in XGBoost.
 
 ![feature_importance](Images/RF_ft_impt.PNG)
 
+!! wrong variable names and potentially wrong graphicc
+
 ![XGBoost_Shap_impt](Images/Shap_ft_impt.png)
 
-Here are the examinations of the shapely values for feature importances. 
+Subsequently, we further investigated the effects of features on the prediction by examining the shapley values. The graphic below, shows the scattered effects that predictors had on one specific prediction for the champion XGBoost model. In addition, the graphic indicates how relatively high or low values of features impacted the overall prediction.
 
-@Jacob or Utku to put in pics
+GRAPHIC
 
--Shaply values overall
--for very low and high error
--individual shaply for one school
--line/scatter feature importances from utku? 
+While low impact features like average download and upload speed look normally distributed around zero, important features like Facebook can be interpreted more reasonable. For this model, low monthly Facebook users resulted in a (much) lower prediction of online population. Similarly, low values of average radiance yielded lower predictions. 
+
+In order to examine impact of the features more detailled, we looked at shapely values where the model performed particularly well and particularly poor (i.e. very low and high errors). 
+
+GRAFIK
+
+We evaluated how the feature importance changes across the range of feature values by creating line and scatter plots indicating the value und respective importance. 
+
+GRAFIK 
+
+Ultimately, we spot-checked single school area predictions with observing how the collection of features influenced this particular prediction. 
+
+GRAPHIC
