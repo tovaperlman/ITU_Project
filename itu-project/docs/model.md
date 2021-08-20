@@ -134,18 +134,19 @@ Subsequently, we further investigated the effects of features on the prediction 
 While low impact features like average download and upload speed look normally distributed around zero, important features like Facebook can be interpreted more reasonable. For this model, low monthly Facebook users resulted in a (much) lower prediction of online population. Similarly, low values of average radiance yielded lower predictions. 
 
 In order to examine impact of the features more detailled, we looked at shapely values where the model performed particularly well and particularly poor (i.e. very low and high errors). 
-For errors larger than 0.4 most of the shapley valzes are scattered around 0, however from this graphic we can not make out a clear pattern why these predictions turned out to be particularly bad. 
+For errors larger than 0.4 most of the shapley values are scattered around 0, however from this graphic we can not make out a clear pattern why these predictions turned out to be particularly bad. 
+Similarly, an inspection of shapely values where the errors were lower than 0.05 does not yield an obvious difference to the overall shapely values that would explain the good performance for these cases.
 
 ![XGBoost_Shap](Images/xgboost_shapely_lowerror.png)
 ![XGBoost_Shap](Images/xgboost_shapely_higherror.png)
 
 
-We evaluated how the feature importance changes across the range of feature values by creating line and scatter plots indicating the value und respective importance. 
+We evaluated how the feature importance changes across the range of feature values by creating line and scatter plots indicating the value und respective importance.  This example depicts the feature importances for the range of average radiance values. We can observe a clear pattern, that the more the radiance deviates from the mean positively or negatively the stronger the respective effect on the prediction appears to be. Very low values have strong negative effects, whereas large values typically have a strong positive effect on the prediction. 
 
 ![XGBoost_Shap](Images/xgboost_shapely_scatterline.png)
 
 
-Ultimately, we spot-checked single school area predictions with observing how the collection of features influenced this particular prediction. 
+Ultimately, we spot-checked single school area predictions with observing how the collection of features influenced this particular prediction. This again can be done for all school areas but also subsetted for the sets of observations with very high or low errors. In the example below, we are examining a high error school area prediction. When inspecting the particular case, it can be observed that Facebook data, did not play a significant role in impacting the prediction. This might have influenced the inaccurate prediction. 
 
 ![XGBoost_Shap](Images/xgboost_shapely_indiv.png)
 
