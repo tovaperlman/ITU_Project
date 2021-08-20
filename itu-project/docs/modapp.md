@@ -64,10 +64,14 @@ For each of the priorization lists, a graphic that maps the schools and depicts 
 
 
 ### Country-level Aggregation 
-A further step of model application was the aggregation to the country level. However, estimating the mere average of online population shares is not possible in this case, since it would weight each enumeration area (or other unit of geographic aggregation) equally. An enumeration area with 25 inhabitants would contribute as much to the national average as an enumeration area with 25.000 people. #are we sure this is how enumeration areas are created?!
+A further step of model application was the aggregation to the country level. However, estimating the mere average of online population shares is not possible in this case, since it would weight each enumeration area (or other unit of geographic aggregation) equally. An enumeration area with 25 inhabitants would contribute as much to the national average as an enumeration area with 250 people. #are we sure this is how enumeration areas are created?!
 
 Therefore, the national average is calculated slightly different. We sum up the previously calculated absolute online population and sum up the total population in our sample. If our enumeration area sample is representative for the whole country, dividing the total online population by the total population (both in sample) would yield a representative national level connectivity share. Ultimately, this proportion can be multiplied with the national population in order to get the absolute number of people connected to the internet. As a robustness check, the same calculations are then conducted using the ground truth connectivity data. 
 If the required data is available, the aggregation can of course also be done to a province, federal state or other geographical level. 
+
+The following table contains the Brazilian relative and absolute online population according to the aggregated prediction, aggregated ground truth and a 3rd online source. The prediction comes close to the other two values, however it slightly overestimates the Brazil online population.  
+
+![Brazil_Agg](Images/aggregated_table.png)
 
 ### Population data remarks
 Generally, some remarks regarding the absolute population data should be made and considered by users. For the priorization and the country level aggregation, the absolute number has to be treated cautiously due to school area overlap. In this exemplary priorization list we can see that the first 6 schools have the same ground truth connectivtity level ("offline_g"). 
