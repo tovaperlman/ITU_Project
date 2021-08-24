@@ -2,7 +2,7 @@ This is about our project with ITU.
 
 Who are we?
 
-- ![Image](Images/cropped.jpg){: style="height:60px;width:60px"} Tova Perlman <br></br>
+- ![Image](Images/cropped.jpg){: style="height:70px;width:60px"} Tova Perlman <br></br>
 Tova hails from Philadelphia, PA. She graduated in May 2021 with a degree in Urban Spatial Analytics from the University of Pennsylvania and is looking forward to pursuing a career in geospatial data science. The highlight of her summer was meeting new colleagues located internationally and learning how to use geemap API for python. 
 
 - Utku Can Ozturk
@@ -13,8 +13,9 @@ Tova hails from Philadelphia, PA. She graduated in May 2021 with a degree in Urb
 Project Mentor:
 Daniel Townsend
 
-Technical Mentor: 
-Robert Hager
+Technical Mentor: <br></br>
+![Image](Images/ROBERT_HAGER_smaller.jpg){: style="height:80px;width:60px"} Robert Hager <br></br>
+Robert resides in Munich, Germany and is a mathematician who took a break from his current position as a Data Scientist, working in the insurance sector, to be a technical mentor for ITU this summer. He has enjoyed contributing his experience in developing and delivering data science products.
 
 
 Who is ITU?
