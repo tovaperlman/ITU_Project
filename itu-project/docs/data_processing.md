@@ -1,8 +1,13 @@
 # Instructions to Create Model-Ready Dataset
 
 1. Create an environment by following these directions. It should have all dependencies you need installed. A note that if you have a mac, some of the packages like GDAL might be harder to install.
+    - Make sure you have the miniconda shell or another type of terminal installed. Type `conda info --envs` to see the other environments that exist.
+    - Then type `conda env create tovaperlman/itu_test_02` . It should take a few moments to minutes for all the packages to download. 
+    - Once this is done, you can check that it's an environment present in your computer by typing again `conda info --envs`
+    - Then to activate the environment you can type `conda activate itu_test_02`
 
-2. Navigate to src/scripts/map_offline/.
+
+2. Once you've activated the environment which has all the necessary packages and dependencies installed, navigate in the same terminal to wherever you've saved the repository. Within that navigate to src/scripts/map_offline/. Then open the repository within a code editor (Visual Studio Code, Atom, Pycharm, etc.)
 
 3. To generate a dataframe comprising any target variables and predictors that you wish to use, first set up the use case configurations in feature_engineering/configs.py. Details of the configurable variables and their expected assignments can be found in the 'configurations' section of the documentation.
 

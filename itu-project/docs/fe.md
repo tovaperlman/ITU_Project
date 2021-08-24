@@ -25,7 +25,7 @@ Having retrieved data of many different types, at different geospatial resolutio
 
 ## Target Variable
 
-Our target variable is ground-truth survey data on local internet connectivity. For the Brazilian and Thai surveys, fowarded to us by ITU, these target variables correspond to the following labels:
+Our target variable is ground-truth survey data on local internet connectivity. For the Brazilian and Thai surveys, forwarded to us by ITU, these target variables correspond to the following labels:
 
 * `Brazil` - A4A
 * `Thailand` - H107
@@ -63,4 +63,4 @@ graph TD
 
 ## Classification Use Case
 
-Should you wish to train or apply a classifier, instead of a regression model, you can create a binary classification dataset by running the 'binning.py' script, found in the src/scripts/ folder. Within this script, it is straightforward to edit the name of a standard regression training dataset that you wish to convert into a classification-ready dataset. To train/apply a classification model, one would then simply need to change the dataset file name within the 'configs.yml' file.
+Our problem is a regression problem, with an outcome that needs to be predictions from 0 -1. However, should you wish to train or apply a classifier, instead of a regression model, you can create a binary classification dataset by running the 'binning.py' script, found in the src/scripts/ folder. Within this script, it is straightforward to edit the name of a standard regression training dataset that you wish to convert into a classification-ready dataset. To train/apply a classification model, one would then simply need to change the dataset file name within the 'configs.yml' file.

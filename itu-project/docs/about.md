@@ -18,6 +18,8 @@ Robert Hager
 
 Who is ITU?
 
+ITU mission is to facilitate connecting all the world's people and to protect and support everyone's right to communicate. ITU and UNICEF have joined forces in the Giga initiative in a bid to connect every school to the Internet by 2030. Aside from directly benefitting children, schools often act as community hubs and so connecting a school often connects the surrounding community too. 
+
 Who is UNICEF?
 
 What is Project Giga?

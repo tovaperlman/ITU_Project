@@ -16,14 +16,39 @@ securityLevel: 'loose'
 
 # Data Gathering 
 
+## Getting Started
+### Instructions to Create Model-Ready Dataset
+
+1. Create a Conda virtual environment with all the packages installed by following the directions below. A note that if you have a mac, some of the packages like GDAL might be harder to install.
+    - Make sure you have the miniconda shell or another type of terminal installed. Type `conda info --envs` to see the other environments that exist and to verify you are in the base environment.
+    - Then type `conda env create tovaperlman/itu_test_02` . It should take a few moments to minutes for all the packages to download. 
+    - Once this is done, you can check that it's an environment present in your computer by typing again `conda info --envs`
+    - Then to activate the environment you can type `conda activate itu_test_02`
+
+
+2. Once you've activated the environment which has all the necessary packages and dependencies installed, navigate in the same terminal to wherever you've saved the repository. Within that navigate to src/scripts/map_offline/. Then open the repository within a code editor (Visual Studio Code, Atom, Pycharm, etc.)
+
+3. To generate a dataframe comprising any target variables and predictors that you wish to use, first set up the use case configurations in feature_engineering/configs.py. Details of the configurable variables and their expected assignments can be found in the 'Meta Data Information/ configurations' section of the documentation.
+
+For this, you must separately get access tokens for open cell ID, Google Earth Engine, and Facebook API. Once you have these, log all of them in the configs file. Otherwise, you will get errors when trying to run the scripts.
+
+For [Open Cell ID](https://opencellid.org/), you just need to sign up for an account and it will give you an API Access Token.
+
+For Google Earth Engine, you must first [sign up](https://signup.earthengine.google.com/) for a [Google Earth Engine account](https://earthengine.google.com/). You cannot use Google Earth Engine unless your application has been approved. Once you receive the application approval email, you can log in to the Earth Engine Code Editor to get familiar with the JavaScript API.
+
+For Facebook API Access Token, follow the directions from the World Bank [here](https://worldbank.github.io/connectivity_mapping/facebook_nbs/getting_your_token.html)
+
+4. Having correctly set the desired configurations, all you need to do is run 'main.py'. Following this, a dataset for model training and/or application will be saved within a training_sets folder, which is situated within the data directory.
+
+
 ## Internal Data
 1. Surveys from ITU for Brazil and Thailand <br></br>
     The target variable for our modeling was the proportion of a population around a particular school that was connected to the internet. It therefore ranged from 0-1, with 0 being zero percent connected and 100 being 100% connected to the internet. We chose to measure this on a school level as one of our objectives, through working with UNICEF, was to detect schools that could be connected to the internet and further serve the community they are located. 
 
-    Within the Brazil Survey data, we received information on household internet connectivity on an enumeration area level. This presented a slight challenge as the level of granularity of the school data was slightly different from the enumeration data or census tract. Thus, we matched the school points to the enumeration area data. We could not use all the school points as we only had enumeration areas for a specific amount of tracts in Brazil. Thus we had to subset our school points data to around 11,000 points. Once we connected the schools to the enumeration areas we were able to build our training data set. <br></br>
+    Within the Brazil survey data, we received information on household internet connectivity on an enumeration area level. This presented a slight challenge as the level of granularity of the school data was slightly different from the enumeration data or census tract. Thus, we matched the school points to the enumeration area data. We could not use all the school points as we only had enumeration areas for a specific amount of tracts in Brazil. Thus we had to subset our school points data to around 11,000 points. Once we connected the schools to the enumeration areas we were able to build our training data set. <br></br>
 
 2. School Points from UNICEF for Brazil <br></br>
-    We got the school points in lat, long format from UNICEF for Brazil. Unfortunately, we were not able to obtain the school points for Thailand. We thus turned to OpenStreetMap to obtain school points for Thailand. We obtained many school points but filtered them to the schools that we were positive were schools as some were tagged as dance schools or even ATM's. Our school points script is thus specific for obtaining the OSM points. 
+    We got the school points in lat, long format from UNICEF for Brazil. Unfortunately, we were not able to obtain the school points for Thailand. We turned to OpenStreetMap to obtain school points for Thailand. We obtained many school points but filtered them to the schools that we were positive were schools as some were tagged as dance schools or even ATM's. Our school points script is specific for obtaining the OSM points. 
 
     Should we say something about the licensing?
 
@@ -33,16 +58,16 @@ securityLevel: 'loose'
 
 1. OpenCelliD Data
 
-    [OpenCelliD](https://opencellid.org/) is a collaborative community project that collects GPS positions of cell towers and their corresponding location area identity. Dataset includes the locations and types of cell towers later which is used to calculate proximity of a tower to a school location.
+    [OpenCelliD](https://opencellid.org/) is a collaborative community project that collects GPS positions of cell towers and their corresponding location area identity. The dataset includes the locations and types of cell towers which is used to calculate proximity of a tower to a school location.
 
-    Each cell tower location contains following adjoining attributes:
+    Each cell tower location contains the following adjoining attributes:
 
     | Parameter | Description |
     |------------|-------------|
     | radio| Network type. One of the strings GSM, UMTS, LTE or CDMA.|
     |mcc| Mobile Country Code (UK: 234, 235)|
     |net| Mobile Network Code (MNC)|
-    |area|Location Area Code (LAC) for GSM and UMTS networks. Tracking Area Code (TAC) for LTE networks. Network IDenfitication number (NID) for CDMA networks |
+    |area|Location Area Code (LAC) for GSM and UMTS networks. Tracking Area Code (TAC) for LTE networks. Network Idenfitication number (NID) for CDMA networks |
     |cell|Cell ID|
     |unit| Primary Scrambling Code (PSC) for UMTS networks. Physical Cell ID (PCI) for LTE networks. An empty value for GSM and CDMA networks|
     |lon|Longitude in degrees between -180.0 and 180.0 <br> If changeable=1: average of longitude values of all related measurements. <br> If changeable=0: exact GPS position of the cell tower|
@@ -51,12 +76,12 @@ securityLevel: 'loose'
     |samples|Total number of measurements assigned to the cell tower
     |changeable| Defines if coordinates of the cell tower are exact or approximate.|
     |created| The first time when the cell tower was seen and added to the OpenCellID database.|
-    |updated|The last time when the cell tower was seen and update.|
+    |updated|The last time when the cell tower was seen and updated.|
     |averageSignal| Average signal strength from all assigned measurements for the cell.|   
 
 2. Population Data
 
-    Population data is high-resolution geospatial data on population distributions. There are several types of gridded population count datasets in the [WorldPop](https://www.worldpop.org/) Open Population Repository (WOPR). In our data gathering pipeline we used [Population Counts / Unconstrained individual countries 2000-2020 UN adjusted (1km resolution)](https://www.worldpop.org/geodata/listing?id=75) datasets from WOPR. The dataset for individual countries is available in Geotiff and ASCII XYZ format at a resolution of 30 arc (approximately 1km at the equator). We used Geotiff image format as input and process the image to get population counts and locations for each pixel in the image.
+    Population data is high-resolution geospatial data on population distributions. There are several types of gridded population count datasets in the [WorldPop](https://www.worldpop.org/) Open Population Repository (WOPR). In our data gathering pipeline we used [Population Counts / Unconstrained individual countries 2000-2020 UN adjusted (1km resolution)](https://www.worldpop.org/geodata/listing?id=75) datasets from WOPR. The dataset for individual countries is available in Geotiff and ASCII XYZ format at a resolution of 30 arc (approximately 1km at the equator). We used the Geotiff image format as input and process the image to get population counts and locations for each pixel in the image.
 
     Each pixel contains the following adjoining attributes:
 
@@ -68,7 +93,7 @@ securityLevel: 'loose'
 
 3. Satellite Data
 
-    To see the full code for gathering this data, click here. To gather the satellite data, we used Google Earth Engine API for Python. We gathered three different types of data: Global Human Modification Index, Nighttime Data, Normalized Difference Vegetation Index. Our hope with gathering this data is that it would provide an accurate proxy for households and schools with internet connection. If we knew a school was located in a place with a high average radiance, it might also mean there was high internet connectivity. The beauty of satellite data is that its continous for the entire globe. We initially struggled with learning how to crop the data for all the school points we wanted. Eventually, we set a buffer, 5 kilometers in our case, zone around each school point in both Brazil and Thailand and obtained specific satellite information that was input as a number into the training dataset. Below please find more information on each of the datasets we used including descriptions taken from the Google Earth Engine Data Catalog.
+    To see the full code for gathering this data, click here. To gather the satellite data, we used Google Earth Engine API for Python. We gathered three different types of data: Global Human Modification Index, Nighttime Data, and Normalized Difference Vegetation Index. Our hope with gathering this data is that it would provide an accurate proxy for households and schools with internet connection. If we knew a school was located in a place with a high average radiance, it might also mean there was high internet connectivity. The beauty of satellite data is that its continous for the entire globe. We initially struggled with learning how to crop the data for all the school points we wanted. Eventually, we set a buffer, 5 kilometers in our case, zone around each school point in both Brazil and Thailand and obtained specific satellite information that was input as a number into the training dataset. Below please find more information on each of the datasets we used including descriptions taken from the Google Earth Engine Data Catalog.
 
     1. Global Human Modification Index (String for Image Collection ID is: 'CSP/HM/GlobalHumanModification'):
         - The global Human Modification dataset (gHM) provides a cumulative measure of human modification of terrestrial lands globally at 1 square-kilometer resolution. The gHM values range from 0.0-1.0 and are calculated by estimating the proportion of a given location (pixel) that is modified, the estimated intensity of modification associated with a given type of human modification or "stressor". 5 major anthropogenic stressors circa 2016 were mapped using 13 individual datasets:
@@ -108,7 +133,7 @@ securityLevel: 'loose'
 
 4. Facebook Data
 
-    Facebook data refers to the data that we get from [Facebook Marketing API](https://developers.facebook.com/docs/marketing-apis). The Marketing API is an HTTP-based API that you can use to programmatically query data, create and manage ads, and perform a wide variety of other tasks. Furthermore, our Facebook data mainly uses Ads Management API under Marketing API which has the method that provides delivery estimate for a given ad set configuration. Ad set refers to the collection of advertisements. For each ad set, it is possible to define delivery estimate using [Ad Set Delivery Estimate](https://developers.facebook.com/docs/marketing-api/reference/ad-campaign/delivery_estimate/) method of the API. Two parameters are required for the delivery estimate method in order to get delivery estimate for a given location: optimization goal and dictionary that defines targeting specifications. [Optimization goal](https://developers.facebook.com/docs/marketing-api/bidding/overview#opt) can take several values such as 'clicks', 'impressions', 'replies', 'reach' etc. In our case, we used 'reach' as an optimization goal parameter since it carries out the 'Reach' objective to show ads to the maximum number of people in the area. On the other hand, [targeting specification](https://developers.facebook.com/docs/marketing-api/audiences/reference/advanced-targeting/) parameter is nicely customizable with fields such as 'geo-locations', 'interests', 'genders', 'age', 'relationship_status' and so on. In our case, we use custom locations (schools) with radius (5 kilometers) as our targeting specification and collect reach estimates for those locations.
+    Facebook data refers to the data that we get from the [Facebook Marketing API](https://developers.facebook.com/docs/marketing-apis). The Marketing API is an HTTP-based API that you can use to programmatically query data, create and manage ads, and perform a wide variety of other tasks. Furthermore, our Facebook data mainly uses the Ads Management API under the Marketing API which has the method that provides a delivery estimate for a given ad set configuration. The Ad set refers to the collection of advertisements. For each ad set, it is possible to define delivery estimate using the [Ad Set Delivery Estimate](https://developers.facebook.com/docs/marketing-api/reference/ad-campaign/delivery_estimate/) method of the API. Two parameters are required for the delivery estimate method in order to get delivery estimate for a given location: optimization goal and dictionary that defines targeting specifications. [Optimization goal](https://developers.facebook.com/docs/marketing-api/bidding/overview#opt) can take several values such as 'clicks', 'impressions', 'replies', 'reach' etc. In our case, we used 'reach' as an optimization goal parameter since it carries out the 'reach' objective to show ads to the maximum number of people in the area. On the other hand, the [targeting specification](https://developers.facebook.com/docs/marketing-api/audiences/reference/advanced-targeting/) parameter is nicely customizable with fields such as 'geo-locations', 'interests', 'genders', 'age', 'relationship_status' and so on. In our case, we use custom locations (schools) with radius (5 kilometers) as our targeting specification and collect reach estimates for those locations.
 
     Each custom location contains the following adjoining attributes:
 
@@ -122,7 +147,7 @@ securityLevel: 'loose'
 
 5. Speedtest Data
 
-    Speedtest data provides global fixed broadband and mobile (cellular) network performance metrics. The dataset provided by [Ookla Open Data Projects](https://www.ookla.com/ookla-for-good) in zoom level 16 web mercator tiles (approximately 610.8 meters by 610.8 meters at the equator). Data is provided in both Shapefile format as well as Apache Parquet with geometries represented in Well Known Text (WKT) projected in EPSG:4326. Download speed, upload speed, and latency are collected via the Speedtest by Ookla applications and averaged for each tile. 
+    Speedtest data provides global fixed broadband and mobile (cellular) network performance metrics. The dataset provided by [Ookla Open Data Projects](https://www.ookla.com/ookla-for-good) is in zoom level 16 web mercator tiles (approximately 610.8 meters by 610.8 meters at the equator). Data is provided in both Shapefile format as well as Apache Parquet with geometries represented in Well Known Text (WKT) projected in EPSG:4326. Download speed, upload speed, and latency are collected via the Speedtest by Ookla applications and averaged for each tile. 
 
     Each tile contains the following adjoining attributes:
 
