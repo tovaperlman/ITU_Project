@@ -15,7 +15,7 @@ Steps in our model application to new data. Please click here for a complete pre
 2. Using the predict_config, we load the Thailand data with the school points and the same predictors used by the original model.
 
 1. We then load the model from the provided model folder. The following code reloads the model and utilizes it to predict the connectivity on the Thailand dataset:
-![picklefile](Images/thailand_pickle_model.png)
+![picklefile](Images/thailand_pickle_model.PNG)
 
 3. After that, we examine the predictions on a map: 
 Here are the maps that show the schools' predictions of relative online population from 0-1 in Thailand. Schools provided by OpenStreetMaps in this case.
@@ -30,7 +30,7 @@ Subsequently, we modify the map to only display schools predicted to be below 50
 In order to compare our predictions to the ground truth, we aggregated the schools up to a province level as survey data was only provided on that level. This measure of evaluation proved challenging for a number of reasons as stated above. 
 
 The following graphics compare predicted and survey data province level connectivity shares on a country map and in a distribution histogram:
-![Thailand_Province](Images/Thailand_province.png) 
+![Thailand_Province](Images/Thailand_province.PNG) 
 ![Thailand_Province](Images/Thailand_distributions.png) 
 
 By visual inspection, we can see that the model predictions on a province level diverge greatly from the existing ground truth. While the predictions are roughly normally distributed across the provinces with a small range of predictions, the range of ground truth connectivity shares appear to be much broader. Therefore, we are uncertain about the ability for our Brazil model to accurately predict school areas' internet connectivity in Thailand. Nevertheless, it seems unreasonable that more than half of Thai provinces have a 100% connectivity rate which raises the uncertainty, whether the large average error of 0.35 was caused by the model or the ground truth data. 
