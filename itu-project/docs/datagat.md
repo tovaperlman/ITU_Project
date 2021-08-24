@@ -50,9 +50,13 @@ For Facebook API Access Token, follow the directions from the World Bank [here](
 2. School Points from UNICEF for Brazil <br></br>
     We got the school points in lat, long format from UNICEF for Brazil. Unfortunately, we were not able to obtain the school points for Thailand. We turned to OpenStreetMap to obtain school points for Thailand. We obtained many school points but filtered them to the schools that we were positive were schools as some were tagged as dance schools or even ATM's. Our school points script is specific for obtaining the OSM points. 
 
-    Should we say something about the licensing?
 
 ## External/Open Source Data
+
+Brief note on licensing: Most of the data sources we used are open source and for research or educational purposes only and not for commercial use. 
+
+[OpenStreetMap®](https://www.openstreetmap.org/copyright) is open data, licensed under the Open Data Commons Open Database License (ODbL) by the OpenStreetMap Foundation (OSMF).
+
 
 ### Dataset Descriptions
 
