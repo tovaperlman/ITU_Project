@@ -6,8 +6,9 @@ Tova hails from Philadelphia, PA. She graduated in May 2021 with a degree in Urb
 
 - Utku Can Ozturk
 - Jonathan Cook
-- Jacob Beck
-![Image](Images/image0.jpeg){: style="height:60px;width:60px"}
+- ![Image](Images/image0.jpeg){: style="height:90px;width:60px"} Jacob Beck <br></br>
+Jacob recently graduated with a Master's degree in Sociology from the University of Mannheim, Germany. Starting in fall 2021 he will be a PhD candidate for the Department of Statistics at LMU Munich. He most enjoyed the collaboration of people from different academic backgrounds and getting insights to Machine Learning approaches. 
+
 
 Project Mentor:
 Daniel Townsend
