@@ -16,15 +16,15 @@ In order to track our models, we set up autologging in mlflow. [Mlflow](https://
         mlflow.set_tracking_uri("file:///files/mlruns")
         mlflow.tracking.get_tracking_uri()
 
-        #Naming the set_experiment
+        # Naming the set_experiment
         dt = date.today().strftime('%d/%m/%Y')
         experiment_name = dt + model_config['meta']['experiment_name']
         mlflow.set_experiment(experiment_name)
         mlflow_client = mlflow.tracking.MlflowClient()
         experiment_id = mlflow_client.get_experiment_by_name(experiment_name).experiment_id ```
-
+        
 Here you can see the simplicity of reloading the model artifact later on and applying it to new data:
-    ![mlflow_pred](Images/thailand_pickle_model.PNG)
+    ![mlflow_setup](Images/thailand_pickle_model.PNG)
 
 
 ## Model Configuration
